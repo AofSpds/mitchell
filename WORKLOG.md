@@ -1,92 +1,45 @@
 # MITCHELL Worklog
 
-전체 대화 기록이 아니라 의미 있는 작업 사건의 정제 기록이다. 내용 작성과 remote commit/readback은 구분한다.
+전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
-## E007 — Bootstrap exact head 안정화와 Worklog UTF-8 복구 / 2026-09-15
+## E007 — Exact head 안정화와 UTF-8 복구 / 2026-09-15
 
-Actor: MITCHELL
-Task: MITCHELL-BW-001-CORRECTION-REREVIEW-HANDOFF
-Recovery base: `99fd6ebd59dcdaf810a2d103379123cd302c0d98`
+- PR 설명 현행화 중 `NONEXISTENT` placeholder가 commit `fc52d761e7fcd97ffab29f42cce6f1e7c7fbfd41`에 생성됐고, 확인 즉시 `f880d0297e4d092c0f7d5025ff42cc7648fb66aa`에서 삭제했다.
+- 실질 교정 head `33b1b7e6…` 대비 현재 head의 파일 diff는 0이며 tree는 동일한 `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a`다. force-reset하지 않았다.
+- 최신 Bootstrap CI run `34972848451`의 PowerShell 5.1/7 두 job이 성공했다. artifact `10397977572`의 outer SHA-256은 `63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f`, inner ZIP SHA-256은 `7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b`다.
+- 이전 WORKLOG blob의 비 UTF-8 바이트를 확인해 UTF-8 문서로 재구성했다.
+- 제품 main, 사용자 PC, Cloud, SNS에는 변경 없음. PR은 Draft·미병합으로 유지한다.
 
-- PR 설명 현행화 중 잘못된 GitHub contents action으로 `NONEXISTENT` placeholder가 `fc52d761…`에서 생성됐고, 확인 즉시 `f880d029…`에서 삭제했다.
-- `33b1b7e6…`과 현재 `f880d029…`의 compare 결과 파일 diff는 0이며, current tree는 교정 소스 tree와 같은 `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a`다. 이력은 force-reset하지 않고 보존했다.
-- 최신 exact head `f880d029…`에서 Bootstrap CI run `34972848451`의 PowerShell 5.1/7 두 job이 성공했다. artifact `10397977572`, outer SHA-256 `63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f`, inner candidate ZIP SHA-256 `7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b`를 확인했다.
-- `WORKLOG.md`의 이전 blob은 UTF-8 decode에 실패했고 Git compare에서 binary-like zero-line change로 나타났다. 마지막 정상 UTF-8 blob `b891a329…`의 E001–E005를 기준으로 E006/E007을 재구성해 UTF-8로 복구했다.
-- 제품 main, 사용자 PC, Cloud, SNS, 외부 계정에는 변경이 없다. PR은 Draft·미병합으로 유지한다.
+## E006 — 최초 IVA 결과와 affected-only 교정 / 2026-09-15
 
-Results: exact Bootstrap head/CI/artifact 현행화, UTF-8 worklog 복구, affected-only IVA 패킷 갱신.
-Resume: 별도 IVA가 새 exact head/tree로 B001/B002/W001/W002만 재검증한다.
-
-## E006 — 최초 IVA 결과 수신과 affected-only 교정 / 2026-09-15
-
-Actor: MITCHELL
-Task: MITCHELL-BW-001-CORRECTION-REREVIEW-HANDOFF
-Review result commit: `d16166f8b390fb63f6332b77960171e803f5bd59`
-
-- 별도 IVA가 Bootstrap/Web Starter 최초 후보를 각각 FAIL, 실환경을 INDETERMINATE, merge를 HOLD로 판정했다.
-- 반환 finding은 `IVA-B001`, `IVA-B002`, `IVA-W001`, `IVA-W002`의 P2 4건이다. 최초 결과 문서를 변경하거나 PASS로 덮어쓰지 않았다.
-- Bootstrap에서 로그 마스킹과 WinGet 재부팅 HRESULT 분류를 교정했다. 실질 교정 head `33b1b7e6…`, tree `2a28a91f…`에서 작성자 PowerShell 5.1/7 CI가 성공했다.
-- Web Starter에서 invalid 설정 화면과 sign-out 오류 처리를 교정했다. head `a2c63cca…`, tree `34716ab2…`에서 web/windows-node/rls-fixture CI가 성공했다.
-- 교정 완료보고, corrected manifest, affected-only IVA 재검증 패킷을 작성했다. PMO는 dispatch하지 않았고 제품 병합·배포·실환경 변경은 수행하지 않았다.
-
-Results: `docs/execution/CORRECTION_COMPLETION_20260915.md`, `CANDIDATE_MANIFEST_20260915_CORRECTED.json`, `IVA_REREVIEW_PACKET_v0.2.md`.
-Resume: 새 exact heads에 대한 affected-only IVA 재검증. 깨끗핔 Windows와 실제 Supabase 통합은 별도 gate다.
+- IVA 결과 commit: `d16166f8b390fb63f6332b77960171e803f5bd59`.
+- 판정: Bootstrap FAIL, Web Starter FAIL, 실환경 INDETERMINATE, merge HOLD.
+- Finding: `IVA-B001`, `IVA-B002`, `IVA-W001`, `IVA-W002`.
+- Bootstrap 교정 tree `2a28a91f…`, Web Starter 교정 head/tree `a2c63cca…` / `34716ab2…`에서 작성자 CI 성공.
+- 교정 완료보고, corrected manifest, affected-only IVA 재검증 패킷 작성. PMO dispatch·제품 병합·배포·실환경 변경 없음.
 
 ## E005 — 중단 복구와 후보 완료 정리 / 2026-09-15
 
-Actor: MITCHELL
-Task: MITCHELL-BW-001-CLOSEOUT
-Recovery base: 386e2cdc00a6d59352d4d175cf8fd2aad3e66d19
+- 제품 브랜치, Draft PR 2개와 성공 CI를 remote 증거로 복구했다.
+- 최초 후보: Bootstrap `b4cabc7…`, Web Starter `15efb21…`.
+- 완료보고, 후보 manifest, 최초 IVA 입력 패킷을 작성했다.
 
-- 사용자의 재개 지시에 따라 README/CURRENT/AGENTS/DECISIONS/계획과 실제 제품 refs·PR·CI를 직접 조회했다.
-- 현재 문서는 구현 전 상태였지만 제품 브랜치, Draft PR 2개와 최종 성공 CI가 존재했다. 중단의 플랫폼 내부 원인은 미확인이다.
-- Bootstrap b4cabc7 및 Web Starter 15efb21 후보를 복구했다. PR 검사 run 34939006314/34939036421의 5개 job 성공을 조회했고 재실행하지 않았다.
-- 기존 CI 후보 ZIP과 exact source tree를 대조했다. Web Starter 53파일은 바이트 일치, Bootstrap 19파일은 8개 바이트 일치/11개 CRLF→LF 환원 일치다. 원본 ZIP checksum을 보존했다.
-- CURRENT/결정/기억을 현행화하고 완료보고·후보 manifest·별도 IVA 입력 패킷을 작성했다.
-- 제품 코드를 새로 수정·병합하지 않았고 PMO/IVA/사용자 PC/Cloud/SNS를 실행하지 않았다.
+## E004 — 최초 구현 후보와 작성자 CI / 2026-09-15
 
-Results: docs/execution/COMPLETION_20260915.md, CANDIDATE_MANIFEST_20260915.json, IVA_REVIEW_PACKET_v0.1.md.
-Commit: 이 파일을 포함하는 remote commit/readback으로 확정하며 미래 SHA를 미리 쓰지 않는다.
-Resume: exact candidates를 사용하는 별도 IVA 검증과 남은 실환경 확인. 초기 생성/성공 CI를 반복하지 않는다.
-
-## E004 — Bootstrap·Web Starter 구현 후보 및 작성자 CI / 2026-09-15
-
-Actor: MITCHELL (중단 전 작업; 재개 시 remote 증거로 복구)
-
-- bootstrap work/bootstrap-v0.1, PR #1, head b4cabc7acb558c556a5b59a7826e43757d67eb27, tree 4d57b63278c33fa9213c1fa5ba82e19c1eefb168.
-- web-starter work/web-starter-v0.1, PR #1, head 15efb21e9cf3c4ba60c34af95f928ba38221a224, tree b657dbbb7177a2e9e70ba8c922c4cec628bbd3ff.
-- 두 후보의 최신 작성자 CI success. 구체적인 검사 범위는 완료보고 참조.
-- PR은 OPEN/DRAFT/UNMERGED. 실제 Windows 설치·실계정 Supabase·사진 앱·SNS·IVA·배포 완료가 아니다.
+- Bootstrap/Web Starter 구현 후보와 Draft PR을 생성했다.
+- 작성자 CI 성공. 실제 Windows 설치·Supabase 실계정·SNS·독립검증·배포 완료는 아님.
 
 ## E003 — 현재 채널 실행권한 기록 / 2026-09-15
 
-Actor: MITCHELL
-Commit: 386e2cdc00a6d59352d4d175cf8fd2aad3e66d19
-Tree: 58e5c2d20a1c2ce12752d39d13ea441e457a041e
-
-사용자가 같은 MITCHELL 채널에서 상세 계획에 따른 GitHub 구현을 지시했다. docs/execution/EXECUTION_20260915.md가 초기 문서-only 범위를 구현·작성자 점검·브랜치·커밋·PR 범위에서 대체한다. 계정·PC·실게시·과금·독립검증 경계는 유지한다.
+- 사용자가 MITCHELL 채널에서 상세 계획에 따른 GitHub 구현을 지시했다.
+- 구현·작성자 점검·브랜치·커밋·PR 권한을 적용하고 계정·실게시·독립검증 경계는 유지했다.
 
 ## E002 — 정책 및 구현 계획 문서화 / 2026-09-15
 
-Actor: MITCHELL
-Task: MITCHELL-FOUNDATION-001
+- HLOM 운영·현재성·기억 정책 중 필요한 부분을 읽고 MITCHELL/PMO/IVA 계약에 적용했다.
+- Bootstrap → Web Starter → 첫 사진 앱의 구현 계획과 운영 문서를 작성했다.
 
-- HLOM의 필요한 운영·현재성·기억 정책을 exact main commit에서 조회했다.
-- 사용자 지정 역할 MITCHELL/PMO/IVA를 현지 계약에 반영했다. PMO/IVA 실행은 하지 않았다.
-- Bootstrap, Web Starter, 첫 사진 앱을 연결한 MITCHELL-PLAN-001 v1.0을 작성했다.
-- 오전 9시 cutoff, 실행기 분리, Supabase key/RLS, 불명확한 게시효과의 재시도 방지, DEMO/실게시 구분을 보완했다.
-- 정책·현재·결정·기억·지침·출처 문서를 한 Git 묶음으로 작성했다.
-- 이 사건의 실제 저장 commit은 해당 파일을 포함하는 remote commit/tree readback에서 확인한다. 미래 SHA를 예측하지 않는다.
+## E001 — 저장소 진입점 생성 / 2026-09-15
 
-Limitations: 코드 구현 없음; Windows 실기 시험 없음; Cloud/SNS 연결 없음; IVA NOT_RUN; ChatGPT 프로젝트 설정 host 적용 미확인.
-Resume: 현재 문서셋 확인 후 계획의 승인된 실행 묶음부터 시작. 완료한 조사·초기 commit을 반복하지 않는다.
-
-## E001 — 저장소 읽기 및 진입점 생성 / 2026-09-15
-
-Actor: MITCHELL
-
-- AofSpds/mitchell과 AofSpds/bootstrap이 Public/main의 빈 저장소임을 직접 확인했다.
-- mitchell의 README를 초기 등록했다.
-- Commit: 14c8de6d41b1fea5f0f47f7a4c1cb0d3201d725a
-- Tree: c1cf8a0284331db40479b710b4e17d87dbaa3401
-- bootstrap 제품 코드는 변경하지 않았다.
+- `AofSpds/mitchell`과 `AofSpds/bootstrap`을 확인하고 MITCHELL README를 초기 등록했다.
+- Bootstrap 제품 코드는 이 사건에서 변경하지 않았다.
