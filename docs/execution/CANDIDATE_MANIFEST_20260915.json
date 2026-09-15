@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "executor": "MITCHELL",
+  "purpose": "source candidate recovery and author-check evidence, not a release or IVA result",
+  "plan": {
+    "path": "docs/IMPLEMENTATION_PLAN_v1.0.md",
+    "blob": "3f4e6910d191f263baa08a1a4e4d1ce7bb4e7635"
+  },
+  "bootstrap": {
+    "repository": "AofSpds/bootstrap",
+    "pr": 1,
+    "branch": "work/bootstrap-v0.1",
+    "commit": "b4cabc7acb558c556a5b59a7826e43757d67eb27",
+    "tree": "4d57b63278c33fa9213c1fa5ba82e19c1eefb168",
+    "ci_run": 34939006314,
+    "ci_jobs": {
+      "powershell-51": "success",
+      "powershell-7": "success"
+    },
+    "candidate_zip": "bootstrap-v0.1-candidate.zip",
+    "sha256": "94737a28c6ea41b359e277af21d4038ba8c860d915440016171d141e78ea4b95",
+    "tracked_files": 19,
+    "archive_verification": "19/19 match after explicitly recorded EOL-only conversion where required; raw archive tree is not Git tree",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "git_blob": "79d95b962de147c2be69cd61bf992b2b5adca3da",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "git_blob": "e0bc3daaea7358383852a3177f2263748ea2e691",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": ".gitignore",
+        "git_blob": "022ca9fcdd7e4d33a5e79961ebe45194361aaf6c",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "AGENTS.md",
+        "git_blob": "a6d619c63f0c9cdb6e2625753be22203f9dc7332",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "README.md",
+        "git_blob": "0435dde871131f6988806d212b90ded5371a202a",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "bootstrap.bat",
+        "git_blob": "4e4fa402b00f80970019b8ba0ec79910d5418c07",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "bootstrap.ps1",
+        "git_blob": "b368356bd1f4a2eb982d8aa0c256d3e1e6815f7e",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "config/packages.psd1",
+        "git_blob": "1b705ef2f59cc1bfbf7107bdee24cc79a259013f",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "docs/FIRST_RUN.md",
+        "git_blob": "4f08bace127ec6237cadad5230141ab34acc95c8",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "docs/SOURCES.md",
+        "git_blob": "e75056f452fef591bd1cbf3821e70558706e2999",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "docs/TESTED_VERSIONS.md",
+        "git_blob": "74f08446324906254c20a0a0abc972335e7cd4dc",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "docs/TROUBLESHOOTING.md",
+        "git_blob": "e9d3c87b6543f87697adef4ac6bf8b2fd85b6e88",
+        "comparison": "BYTE_IDENTICAL"
+      },
+      {
+        "path": "scripts/common.ps1",
+        "git_blob": "4456aa57727962bb33cbf8a89df9b133e9484e62",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "scripts/install-ai.ps1",
+        "git_blob": "9898e462413130a23f7f945535c32e4d1bc27613",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "scripts/install-packages.ps1",
+        "git_blob": "8de6af212514ef787c44e88931b53c96a39d3418",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "scripts/preflight.ps1",
+        "git_blob": "f2d93799759fc3925268f83970697eee9084fcf0",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "scripts/verify.ps1",
+        "git_blob": "3c88082e6e60b24bbeb7464d7b2cbaed5e1396de",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "tests/logs-and-catalogue.ps1",
+        "git_blob": "22cf2924b7a7f8742707a459eac1baacead47b09",
+        "comparison": "CRLF_TO_LF_ONLY"
+      },
+      {
+        "path": "tests/run.ps1",
+        "git_blob": "e926e9cbd378d31dbd3cf8d2d197a9dd968eac4e",
+        "comparison": "CRLF_TO_LF_ONLY"
+      }
+    ]
+  },
+  "web_starter": {
+    "repository": "AofSpds/web-starter",
+    "pr": 1,
+    "branch": "work/web-starter-v0.1",
+    "commit": "15efb21e9cf3c4ba60c34af95f928ba38221a224",
+    "tree": "b657dbbb7177a2e9e70ba8c922c4cec628bbd3ff",
+    "ci_run": 34939036421,
+    "ci_jobs": {
+      "web": "success",
+      "windows-node": "success",
+      "rls-fixture": "success"
+    },
+    "candidate_zip": "web-starter-v0.1-candidate.zip",
+    "sha256": "580f088d78b4571b931186dc57234f12cf62b4b0444d6b6e6957c970eb0a55d9",
+    "tracked_files": 53,
+    "archive_verification": "all file bytes reconstruct the exact Git tree"
+  },
+  "not_run": [
+    "clean Windows 11 install",
+    "user PC UAC and actual package installation",
+    "real AI account login",
+    "live Supabase Auth/Storage HTTP integration",
+    "daily-photo-publisher implementation",
+    "live SNS publication",
+    "scheduled publication activation",
+    "PMO runtime",
+    "IVA independent verification",
+    "product merge",
+    "template activation",
+    "release/deployment"
+  ],
+  "archive_limits": "CI archives are review candidates, without .git or node_modules. ZIP SHA256 identifies the supplied bytes, not a product signature. No raw logs or real credentials included."
+}

@@ -2,46 +2,42 @@
 
 PROJECT_ID: MITCHELL
 PERSONA_ID: MITCHELL
-GENERATION: 1
-MEMORY_DELTA_ID: MITCHELL-MEM-001
-EXPECTED_GENERATION: 0 (initial file absent)
-SEMANTIC_OWNER: MITCHELL
-WRITER: MITCHELL under current user's document-persistence request
-SOURCE: 2026-09-15 current conversation, material user requirements; stable message/channel ID unavailable
-PROVENANCE: DERIVED_SUMMARY, not raw conversation
+GENERATION: 2
+MEMORY_DELTA_ID: MITCHELL-MEM-002
+EXPECTED_GENERATION: 1
+EXPECTED_BASE_COMMIT: 386e2cdc00a6d59352d4d175cf8fd2aad3e66d19
+SEMANTIC_OWNER / WRITER: MITCHELL / MITCHELL
+SOURCE: 2026-09-15 현재 대화의 후속 실행·재개 지시 및 GitHub 직접 조회
+PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 
 ## 지속 목적
 
-개발자가 비개발자 친구를 도울 수 있도록 Windows 초기 환경과 Git 기반 AI 개발 경로를 단순화한다. 친구의 교육은 쉬운 단계별 안내로 제공하고, 개발자는 저장소에서 구조와 변경을 점검할 수 있어야 한다. 계속 사소한 결정을 사용자에게 되묻는 대신 실행 가능한 기본값과 경계를 한 번에 제시한다.
+개발자가 비개발자 친구를 도울 수 있도록 Windows 초기 환경과 Git 기반 AI 개발을 단순화한다. 교육은 쉬운 단계별 안내, 개발자는 저장소의 구조와 변경을 점검하는 방식이다. 사소한 구현 선택을 반복 확인시키지 않고 승인된 계획의 기본값으로 진행한다.
 
-## 명시적 역할과 현재 경계
+## 역할·채널
 
-메인 Persona는 MITCHELL, Codex WORK 작업자는 PMO, 독립 검증자는 IVA다. 다른 Persona/페어 검증자는 미설치다. 현재는 MITCHELL 대화 채널이 문서·Git 작업을 직접 수행하며 PMO로 자동 이관하지 않는다. 정의와 실제 runtime 호출을 구분한다.
+메인 MITCHELL, Codex WORK 작업자 PMO, 독립 검증자 IVA. 다른 Persona/페어 검증자는 미설치다. 사용자는 Pro 전환 후에도 새 채널로 가지 않고 현재 MITCHELL 채널에서 직접 Git 구현을 진행하도록 지시했다. PMO로 임의 이관하지 않는다. 별도 실행 증거 없는 PMO/IVA는 NOT_DISPATCHED/NOT_RUN이다.
 
-## 기술 맥락
+## 기술과 경계
 
-설치기 이름에서 vibe를 제외하고 bootstrap을 사용한다. AofSpds/bootstrap은 Windows 개발환경 설치 도구, AofSpds/mitchell은 현재 운영·계획 허브다. 제품 방향은 Next.js/TypeScript/Tailwind/Supabase, IDE 기본은 VS Code, Git GUI는 GitHub Desktop이다. Codex/Claude는 기존 계정 선택 도구이며 추가 유료 구독을 기본 요구로 하지 않는다.
+설치기 이름은 vibe를 뺀 bootstrap이다. AofSpds/mitchell은 운영·계획 허브, AofSpds/bootstrap은 Windows 설치 도구, AofSpds/web-starter는 Next.js/TypeScript/Tailwind/Supabase 템플릿이다. IDE는 VS Code, Git GUI는 GitHub Desktop, Codex/Claude는 기존 계정의 선택 도구다. 추가 구독·API 과금을 기본 요구로 하지 않는다.
 
-첫 실전 과제는 사진을 SNS에 게시하고 오전 9시 자동 실행하는 앱이다. 공식 API와 실제 계정 권한 확인을 분리한다. 초기 구현은 mock 후 단일 SNS 게시로 좁혀 성공 경로를 만든다. 당일 사진을 전일 사진으로 조용히 바꾸지 않는다. 기본 날짜창·일일 한도·지연 시간은 계획의 설계 제안이지 별도의 사용자 확정 발언이 아니다.
+첫 실제 과제는 당일 사진 SNS 게시와 오전 9시 실행이다. 당일 요구를 몰래 전일로 바꾸지 않는다. 계획의 날짜창·일일 한도·지연 기본값은 이후 계획 실행 지시로 구현 기본값에 채택되었으나, 실제 사진 앱·게시·예약이 구현/활성화된 것은 아니다. 실제 앱은 공통 템플릿과 분리한다.
 
-## 재발 방지
+## 이번 delta와 재발 방지
 
-- GitHub Desktop 자체가 AI 코딩 도구라고 설명하지 않는다.
-- Next.js scaffold 생성과 Supabase Cloud 프로젝트/계정 준비를 같다고 하지 않는다.
-- HLOM의 규범 배포 Bootstrap과 Windows 설치기 bootstrap을 혼동하지 않는다.
-- HLOM/AAA의 조직 전체를 이식하거나 세 Persona 외의 검증자를 자동 추가하지 않는다.
-- 테스트 green, Git 반영, 독립검증 PASS, 실제 설치, 실게시, 제품 배포를 합쳐 완료라고 하지 않는다.
-- 공개 Git에 대화 원문·개인 사진·실제 키·비공개 프로젝트 원문을 넣지 않는다.
-- 문서 생성만으로 ChatGPT 프로젝트 설정·영구 기억·host Persona 설치가 끝났다고 하지 않는다.
+직전 응답이 중단되어도 Git 코드·PR·CI는 남아 있었다. 운영 문서의 오래된 NOT_STARTED만 믿고 재구현하면 안 된다. 먼저 remote ref, PR head/tree, CI run과 남은 산출물을 대조하고 성공 효과를 재사용한다. 정확한 진행상태와 SHA는 CURRENT/완료보고가 소유하며 이 기억에 전문 복제하지 않는다.
 
-## 소유하지 않는 정보
+Bootstrap 후보 ZIP은 Windows 줄바꿈 변환이 있을 수 있다. ZIP checksum, raw blob 일치, 줄바꿈 정규화 후 tree 일치를 구분하고 바이트 동일성을 과장하지 않는다. main의 초기 README와 작업 PR의 구현 후보를 구분한다.
 
-세부 진행상태는 CURRENT.md, 사건은 WORKLOG.md, 결정 상태는 DECISIONS.md, 구현 상세는 docs/IMPLEMENTATION_PLAN_v1.0.md가 소유한다. 여기에는 동일 내용을 전문 복제하지 않는다.
+GitHub Desktop은 AI가 아니다. Next.js 생성과 Supabase 계정 생성은 다르다. CI green은 독립검증·실제 PC 설치·실계정 연결·제품 배포가 아니다. HLOM의 조직 전체나 전역 재검증 루프를 이식하지 않는다. 공개 Git에는 대화 원문·개인 사진·실제 키·비공개 원문·원본 로그를 남기지 않는다.
 
-## 보존 수준
+## 기록 소유권과 보존 수준
+
+CURRENT는 현재 단계, DECISIONS는 채택/대체 관계, WORKLOG는 사건, 구현 계획/완료보고는 상세 범위와 증거를 소유한다. 한 lineage에는 한 writer를 두고 다음 변경 전 generation/head를 확인한다.
 
 CONVERSATION_PRESERVATION: PARTIAL / SUMMARY_ONLY
 RAW_TRANSCRIPT_ARCHIVE: NOT_CONFIGURED
 HOST_MEMORY_DATABASE: NOT_IMPLEMENTED
 
-현재 보이는 맥락의 정제 요약이다. 과거 모든 채널을 읽거나 원문 전체를 백업했다는 뜻이 아니다. 미래 변경은 generation·예상 Git head를 확인하고 한 writer가 직렬 반영한다.
+Git 파일 저장만으로 ChatGPT 플랫폼 설정 변경·전체 대화 백업·자동 다중 Persona 실행을 주장하지 않는다.
