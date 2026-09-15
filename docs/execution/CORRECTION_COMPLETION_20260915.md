@@ -1,7 +1,7 @@
 # MITCHELL IVA 교정 완료보고
 
 - 문서 ID: `MITCHELL-BW-001-CORRECTION-COMPLETION`
-- 버전: `1.0`
+- 버전: `1.1`
 - 작성일: `2026-09-15`
 - 작성자: `MITCHELL`
 - 상태: `AUTHOR_CORRECTION_COMPLETED / AUTHOR_CHECKS_SUCCESS / IVA_REREVIEW_NOT_RUN`
@@ -24,10 +24,12 @@
 
 | 대상 | Branch / PR | 최초 IVA 대상 | 새 Head | 새 Tree |
 |---|---|---|---|---|
-| Bootstrap | `work/bootstrap-v0.1` / #1 | `b4cabc7acb558c556a5b59a7826e43757d67eb27` | `33b1b7e6a788d04ba61acd6c689bb5f20245116c` | `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a` |
+| Bootstrap | `work/bootstrap-v0.1` / #1 | `b4cabc7acb558c556a5b59a7826e43757d67eb27` | `f880d0297e4d092c0f7d5025ff42cc7648fb66aa` | `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a` |
 | Web Starter | `work/web-starter-v0.1` / #1 | `15efb21e9cf3c4ba60c34af95f928ba38221a224` | `a2c63cca6bdbf0667ba2d9e1c8d8e7af2e137a17` | `34716ab2e0f82f625f6f6ada1cf0c205d665da51` |
 
 두 PR은 `OPEN / DRAFT / UNMERGED`다.
+
+Bootstrap의 실질 교정 코드는 `33b1b7e6a788d04ba61acd6c689bb5f20245116c`에서 완성됐다. 이후 placeholder 생성·즉시 삭제의 bookkeeping commits `fc52d761…` / `f880d029…`가 추가됐지만 `33b1b7e6…` 대비 file diff는 0이며 tree는 동일하다. 이력을 force-reset하지 않고 exact current head를 재검증 대상으로 고정했다.
 
 ## 3. Bootstrap 교정
 
@@ -64,9 +66,11 @@
 - MSI `3010`/`1641` 처리, 전체 종료코드 `2`, 수동 재부팅·자동 재부팅 금지 계약을 유지했다.
 - 일반 실패 `99`는 재부팅 필요로 오분류하지 않는다.
 
-### 투명하게 보존한 중간 실패
+### 투명하게 보존한 중간·운영 이력
 
 첫 교정 head `4b5791ae38c6625a0955b78d7c30a6ae254380a8`의 PR run `34970081183`은 실패했다. signed-HRESULT 제품 로직은 독립 helper 검사에서 통과했으나, 직전 `3010` fixture가 `present=true`를 남겨 다음 설치 경로를 건너뛰는 테스트 격리 결함이었다. 각 재부팅 사례 전에 상태를 초기화한 테스트 전용 commit `33b1b7e6a788d04ba61acd6c689bb5f20245116c`을 추가했다. 제품 분기를 우회하거나 기대값을 약화하지 않았다.
+
+그 뒤 PR 설명을 현행화하는 과정에서 `NONEXISTENT` placeholder가 commit `fc52d761e7fcd97ffab29f42cce6f1e7c7fbfd41`에 생성됐고 commit `f880d0297e4d092c0f7d5025ff42cc7648fb66aa`에서 즉시 삭제됐다. 현재 파일 집합과 tree는 `33b1b7e6…`과 동일하다. 최신 head에서 전체 Bootstrap workflow를 다시 통과시켰다.
 
 ## 4. Web Starter 교정
 
@@ -107,32 +111,32 @@
 
 | 대상 | Run | Job | 결과 |
 |---|---|---|---|
-| Bootstrap | `34970656993` | powershell-51 | success |
-| Bootstrap | `34970656993` | powershell-7 | success |
+| Bootstrap | `34972848451` | powershell-51 | success |
+| Bootstrap | `34972848451` | powershell-7 | success |
 | Web Starter | `34970348151` | web | success |
 | Web Starter | `34970348151` | windows-node | success |
 | Web Starter | `34970348151` | rls-fixture | success |
 
-Bootstrap 검사는 PowerShell parser/mock과 교정 회귀 사례다. Web 검사는 npm ci, lint/type/unit/build, DEMO browser, dependency audit, Windows Node check, PostgreSQL 정책 fixture를 포함한다. 기존 성공 증거는 유지했지만 새 head에서 해당 workflow 전체가 다시 성공했다.
+Bootstrap 검사는 PowerShell parser/mock과 교정 회귀 사례다. Web 검사는 npm ci, lint/type/unit/build, DEMO browser, dependency audit, Windows Node check, PostgreSQL 정책 fixture를 포함한다. 기존 성공 증거는 유지했지만 새 exact head에서 관련 workflow가 성공했다.
 
 ## 6. Artifact와 source identity
 
 | 항목 | Bootstrap | Web Starter |
 |---|---|---|
-| Artifact ID | `10396389180` | `10396488405` |
-| 외부 artifact SHA-256 | `021a1caf5717ae5e05ffa6800a940bb8035ec466d0c28dca17af1f113b8cd6c7` | `416622c3d094662098722ff882f7a57bbbababa062c61705a259d4864f6b8be0` |
-| 내부 candidate ZIP SHA-256 | `a65cb366a9ccc5ae1de0ea0878649a45c590c507634deb10a573c27191a919e6` | `a8f85ab275c718727099136b235cf5bd7fa57362f1be7304a7f52368ea34c4df` |
+| Artifact ID | `10397977572` | `10396488405` |
+| 외부 artifact SHA-256 | `63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f` | `416622c3d094662098722ff882f7a57bbbababa062c61705a259d4864f6b8be0` |
+| 내부 candidate ZIP SHA-256 | `7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b` | `a8f85ab275c718727099136b235cf5bd7fa57362f1be7304a7f52368ea34c4df` |
 | Source file count | 19 | 57 |
 | Tree 대조 | Windows text normalization + raw `bootstrap.bat` 적용 후 exact `2a28a91f…` | 추출 원본 바이트로 exact `34716ab2…` |
 
-외부 ZIP의 계산 SHA-256은 GitHub artifact digest와 일치한다. Bootstrap은 CI의 Windows checkout 때문에 11개 text 파일의 CRLF를 Git blob LF로 정규화했고, 저장소 blob 자체가 CRLF인 `bootstrap.bat`은 raw blob으로 유지한 뒤 exact tree를 얻었다. 이 차이를 전체 바이트 동일성으로 과장하지 않는다.
+외부 ZIP의 계산 SHA-256은 GitHub artifact digest와 일치한다. Bootstrap은 CI의 Windows checkout 때문에 text 파일의 CRLF를 Git blob LF로 정규화했고, 저장소 blob 자체가 CRLF인 `bootstrap.bat`은 raw blob으로 유지한 뒤 exact tree를 얻었다. 이 차이를 전체 바이트 동일성으로 과장하지 않는다.
 
 Artifact `evidence.json`의 `iva: NOT_RUN`은 해당 작성자 CI artifact 범위의 표시다. 최초 IVA 독립검증이 수행된 프로젝트 현재 상태를 부정하지 않으며, 새 후보의 IVA 재검증은 실제로 아직 NOT_RUN이다.
 
 ## 7. 남은 gate
 
 - IVA affected-only 재검증: `NOT_RUN`
-- 깨끗하 Windows 11 x64 실제 설치/UAC/WinGet: `NOT_RUN`
+- 깨끗한 Windows 11 x64 실제 설치/UAC/WinGet: `NOT_RUN`
 - 기존 사용자 PC 보존·PATH·한글/공백 경로·재실행: `NOT_RUN`
 - 실제 Supabase Auth/HTTP CRUD/Storage/logout/cookie: `NOT_RUN`
 - 제품 main 병합·Template 활성화·릴리스·배포: `NOT_DONE`

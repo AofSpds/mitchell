@@ -1,7 +1,7 @@
 # MITCHELL → IVA affected-only 재검증 패킷
 
 **PACKET_ID:** `MITCHELL-IVA-BW-001-REREVIEW`
-**VERSION:** `0.2`
+**VERSION:** `0.2.1`
 **DATE:** `2026-09-15`
 **FROM:** `MITCHELL`
 **TO:** `IVA`
@@ -39,10 +39,12 @@
 Repository = AofSpds/bootstrap
 Branch     = work/bootstrap-v0.1
 PR         = #1
-Head       = 33b1b7e6a788d04ba61acd6c689bb5f20245116c
+Head       = f880d0297e4d092c0f7d5025ff42cc7648fb66aa
 Tree       = 2a28a91f8fdbbbc80bd37209206cdab9cf5e715a
 Base main  = 351333d6b4e6db1635c8caeb0f7dd8c4e3aee72c
 ```
+
+실질 교정 head `33b1b7e6a788d04ba61acd6c689bb5f20245116c` 이후 placeholder 생성·삭제의 두 bookkeeping commit이 존재한다. `33b1b7e6…` 대비 현재 head의 file diff는 0이고 tree는 동일하다. 이력을 숨기거나 force-reset하지 않았으며, 현재 exact head에서 새 CI를 성공시켰다.
 
 ### Web Starter
 
@@ -125,12 +127,12 @@ tests/unit/auth-session.test.ts
 
 | 대상 | CI run | 결과 | Artifact ID | 외부 SHA-256 | 내부 후보 ZIP SHA-256 |
 |---|---:|---|---:|---|---|
-| Bootstrap | `34970656993` | powershell-51 / powershell-7 success | `10396389180` | `021a1caf5717ae5e05ffa6800a940bb8035ec466d0c28dca17af1f113b8cd6c7` | `a65cb366a9ccc5ae1de0ea0878649a45c590c507634deb10a573c27191a919e6` |
+| Bootstrap | `34972848451` | powershell-51 / powershell-7 success | `10397977572` | `63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f` | `7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b` |
 | Web Starter | `34970348151` | web / windows-node / rls-fixture success | `10396488405` | `416622c3d094662098722ff882f7a57bbbababa062c61705a259d4864f6b8be0` | `a8f85ab275c718727099136b235cf5bd7fa57362f1be7304a7f52368ea34c4df` |
 
 Bootstrap source는 Git text normalization과 raw CRLF `bootstrap.bat`을 구분해 exact tree를 재계산했다. Web source는 추출 원본 바이트로 exact tree를 재계산했다. 상세 inventory는 `docs/execution/CANDIDATE_MANIFEST_20260915_CORRECTED.json`과 `CORRECTION_COMPLETION_20260915.md`에 있다.
 
-Bootstrap의 중간 run `34970081183` 실패는 재부팅 fixture 간 상태 초기화 누락이었다. 최종 head에서 테스트 격리를 수정하고 두 PowerShell job이 성공했다. 이 실패를 숨기거나 제품 PASS로 대체하지 않는다.
+Bootstrap의 중간 run `34970081183` 실패는 재부팅 fixture 간 상태 초기화 누락이었다. 최종 교정 head에서 테스트 격리를 수정했고, current exact head `f880d029…`에서도 두 PowerShell job이 다시 성공했다. placeholder 생성·삭제는 source tree를 바꾸지 않았으며 현재 artifact가 같은 tree를 기록한다.
 
 ## 6. IVA 재검증 요청
 

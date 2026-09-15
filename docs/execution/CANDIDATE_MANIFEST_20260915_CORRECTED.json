@@ -1,13 +1,18 @@
 {
   "manifestId": "MITCHELL-BW-001-CORRECTED-CANDIDATES",
-  "version": "1.0",
+  "version": "1.1",
   "date": "2026-09-15",
   "writer": "MITCHELL",
   "sourceReview": {
     "document": "docs/execution/IVA_REVIEW_RESULT_20260915.md",
     "commit": "d16166f8b390fb63f6332b77960171e803f5bd59",
     "verdict": "CORRECTION_REQUIRED",
-    "findings": ["IVA-B001", "IVA-B002", "IVA-W001", "IVA-W002"]
+    "findings": [
+      "IVA-B001",
+      "IVA-B002",
+      "IVA-W001",
+      "IVA-W002"
+    ]
   },
   "bootstrap": {
     "repository": "AofSpds/bootstrap",
@@ -15,13 +20,22 @@
     "pullRequest": 1,
     "base": "351333d6b4e6db1635c8caeb0f7dd8c4e3aee72c",
     "firstIvaHead": "b4cabc7acb558c556a5b59a7826e43757d67eb27",
-    "correctedHead": "33b1b7e6a788d04ba61acd6c689bb5f20245116c",
+    "substantiveCorrectionHead": "33b1b7e6a788d04ba61acd6c689bb5f20245116c",
+    "correctedHead": "f880d0297e4d092c0f7d5025ff42cc7648fb66aa",
     "correctedTree": "2a28a91f8fdbbbc80bd37209206cdab9cf5e715a",
     "correctionCommits": [
       "4b5791ae38c6625a0955b78d7c30a6ae254380a8",
       "33b1b7e6a788d04ba61acd6c689bb5f20245116c"
     ],
-    "findings": ["IVA-B001", "IVA-B002"],
+    "bookkeepingCommits": [
+      "fc52d761e7fcd97ffab29f42cce6f1e7c7fbfd41",
+      "f880d0297e4d092c0f7d5025ff42cc7648fb66aa"
+    ],
+    "bookkeepingNetFileDiffFromSubstantiveHead": 0,
+    "findings": [
+      "IVA-B001",
+      "IVA-B002"
+    ],
     "changedCorrectionPaths": [
       "scripts/common.ps1",
       "scripts/install-packages.ps1",
@@ -30,12 +44,12 @@
       "docs/TROUBLESHOOTING.md"
     ],
     "authorCi": {
-      "runId": 34970656993,
+      "runId": 34972848451,
       "event": "pull_request",
       "conclusion": "success",
       "jobs": {
-        "powershell-51": 104385856503,
-        "powershell-7": 104385856878
+        "powershell-51": 104393108640,
+        "powershell-7": 104393108225
       }
     },
     "interimFailedRun": {
@@ -44,11 +58,11 @@
       "productLogicBypass": false
     },
     "artifact": {
-      "id": 10396389180,
+      "id": 10397977572,
       "name": "bootstrap-candidate",
-      "outerSha256": "021a1caf5717ae5e05ffa6800a940bb8035ec466d0c28dca17af1f113b8cd6c7",
-      "innerCandidateZipSha256": "a65cb366a9ccc5ae1de0ea0878649a45c590c507634deb10a573c27191a919e6",
-      "evidenceMergeCommit": "baa43bcf5ecd0e0439e6b680b8df04da36588aa7",
+      "outerSha256": "63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f",
+      "innerCandidateZipSha256": "7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b",
+      "evidenceMergeCommit": "327bed470cfe8eeffd9d07c41eb5ec4efc04cc92",
       "sourceFileCount": 19,
       "identity": "EXACT_TREE_AFTER_11_TEXT_CRLF_TO_LF_NORMALIZATIONS_AND_RAW_BOOTSTRAP_BAT",
       "verifiedTree": "2a28a91f8fdbbbc80bd37209206cdab9cf5e715a"
@@ -65,7 +79,10 @@
     "correctionCommits": [
       "a2c63cca6bdbf0667ba2d9e1c8d8e7af2e137a17"
     ],
-    "findings": ["IVA-W001", "IVA-W002"],
+    "findings": [
+      "IVA-W001",
+      "IVA-W002"
+    ],
     "changedCorrectionPaths": [
       "src/components/notes-configuration-state.tsx",
       "src/lib/auth-session.ts",
