@@ -1,55 +1,63 @@
 # MITCHELL Current
 
-Updated: 2026-09-15 / Generation: 2 / Writer: MITCHELL
-Expected previous generation: 1
-Recovery base commit: `386e2cdc00a6d59352d4d175cf8fd2aad3e66d19`
+Updated: 2026-09-15 / Generation: 3 / Writer: MITCHELL
+Expected previous generation: 2
+Recovery base commit: `d16166f8b390fb63f6332b77960171e803f5bd59`
 
 ## 목적과 현재
 
-Windows Bootstrap과 Web Starter의 구현 후보를 GitHub에 보존하고, 작성자 검사 증거와 독립검증 진입점을 정리한다. 중단된 응답 이후 실제 remote refs·PR·CI·전달 ZIP을 대조하여 재개했다. 중단의 플랫폼 내부 원인은 확인하지 못했다.
+Windows Bootstrap과 Web Starter의 최초 IVA 독립검증 결과를 수신하고, IVA가 지정한 P2 4건만 교정한 새 후보를 고정했다. 기존 최초 검증의 FAIL 판정은 당시 head에 대한 유효 기록으로 보존하며, 새 후보는 작성자 검사까지 완료됐고 affected-only IVA 재검증은 아직 실행되지 않았다.
 
 | 필드 | 현재 값 |
 |---|---|
 | PROJECT_ID / CURRENT_PERSONA_LOCK | MITCHELL / MITCHELL |
-| CURRENT_TASK | MITCHELL-BW-001-CLOSEOUT |
+| CURRENT_TASK | MITCHELL-BW-001-CORRECTION-REREVIEW-HANDOFF |
 | CURRENT_GIT_EXECUTOR | MITCHELL — 현재 채널 직접 수행 |
-| PLAN | docs/IMPLEMENTATION_PLAN_v1.0.md, blob 3f4e6910d191f263baa08a1a4e4d1ce7bb4e7635 |
+| PLAN | docs/IMPLEMENTATION_PLAN_v1.0.md, blob `3f4e6910d191f263baa08a1a4e4d1ce7bb4e7635` |
 | PLAN_ADOPTION | 구현 기본값 채택; docs/execution/EXECUTION_20260915.md가 과거 문서-only 권한 경계를 대체 |
-| BOOTSTRAP | 소스 후보 19파일, PR #1 OPEN/DRAFT/UNMERGED, 작성자 CI success |
-| WEB_STARTER | 소스 후보 53파일, PR #1 OPEN/DRAFT/UNMERGED, 작성자 CI success |
-| IMPLEMENTATION_SCOPE | B/W 코드 후보 및 R01 인계 준비. 전체 제품계획 완료가 아님 |
+| IVA_FIRST_REVIEW | COMPLETED / Bootstrap FAIL / Web Starter FAIL / CORRECTION_REQUIRED |
+| IVA_RESULT_RECORD | docs/execution/IVA_REVIEW_RESULT_20260915.md @ `d16166f8b390fb63f6332b77960171e803f5bd59` |
+| CORRECTION_SCOPE | IVA-B001 / IVA-B002 / IVA-W001 / IVA-W002 affected-only |
+| CORRECTION_STATUS | AUTHOR_CORRECTION_COMPLETED / AUTHOR_CI_SUCCESS |
+| IVA_REREVIEW | NOT_RUN / PENDING_HANDOFF |
+| BOOTSTRAP | 수정 후보 19파일, PR #1 OPEN/DRAFT/UNMERGED, 작성자 CI success |
+| WEB_STARTER | 수정 후보 57파일, PR #1 OPEN/DRAFT/UNMERGED, 작성자 CI success |
 | DAILY_PHOTO_APP | P01–P04 / S01–S03 NOT_STARTED |
-| PMO_RUNTIME / IVA_RESULT | NOT_DISPATCHED / NOT_RUN |
+| PMO_RUNTIME | NOT_DISPATCHED |
 | OTHER_PERSONAS | NOT_INSTALLED |
 | USER_PC_INSTALL / LIVE_SUPABASE / LIVE_SNS | NOT_RUN / NOT_RUN / NOT_RUN |
 | PRODUCT_MERGE / TEMPLATE / RELEASE / DEPLOY | NOT_DONE / NOT_DONE / NOT_DONE / NOT_DONE |
 | CHATGPT_PROJECT_SETTINGS | 등록용 지침 제공; Git write를 host 설정 변경 증거로 사용하지 않음 |
 
-## 고정된 제품 대상
+## 새 검증 후보
 
-| 저장소 | 브랜치 / PR | Head | Tree | 성공한 작성자 CI |
+| 저장소 | 브랜치 / PR | Head | Tree | 최종 성공한 작성자 CI |
 |---|---|---|---|---|
-| AofSpds/bootstrap | work/bootstrap-v0.1 / #1 | b4cabc7acb558c556a5b59a7826e43757d67eb27 | 4d57b63278c33fa9213c1fa5ba82e19c1eefb168 | 34939006314 |
-| AofSpds/web-starter | work/web-starter-v0.1 / #1 | 15efb21e9cf3c4ba60c34af95f928ba38221a224 | b657dbbb7177a2e9e70ba8c922c4cec628bbd3ff | 34939036421 |
+| AofSpds/bootstrap | work/bootstrap-v0.1 / #1 | `33b1b7e6a788d04ba61acd6c689bb5f20245116c` | `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a` | `34970656993` |
+| AofSpds/web-starter | work/web-starter-v0.1 / #1 | `a2c63cca6bdbf0667ba2d9e1c8d8e7af2e137a17` | `34716ab2e0f82f625f6f6ada1cf0c205d665da51` | `34970348151` |
 
-제품 main은 아직 초기 README 기준이다. `main` ZIP을 내려받아 구현 후보가 들어 있다고 가정하지 않는다. PR의 정확한 head 또는 전달 후보 ZIP을 사용한다.
+최초 IVA 검증 대상은 Bootstrap `b4cabc7…` / Web Starter `15efb21…`이며 위 새 후보와 동일하지 않다. 제품 main은 아직 초기 README 기준이다. PR의 정확한 head 또는 교정 후보 artifact를 사용하고, main ZIP을 구현 후보로 오인하지 않는다.
 
-## 실제 완료와 증거
+## 교정과 작성자 증거
 
-- 직전 실행에서 제품 브랜치·커밋·PR·CI 산출물이 만들어졌다. 이번 재개에서는 이를 복구·대조했으며 동일 검사를 다시 돌리지 않았다.
-- Bootstrap PowerShell 5.1/7의 parser·mock 검사, Web Starter Windows/Linux 빌드·단위·DEMO 브라우저·SQL 정책 검사의 성공을 직접 조회했다.
-- 완료보고: `docs/execution/COMPLETION_20260915.md`.
-- 후보와 체크섬: `docs/execution/CANDIDATE_MANIFEST_20260915.json`.
-- 별도 IVA 전달 패킷: `docs/execution/IVA_REVIEW_PACKET_v0.1.md`. 패킷 작성은 검증 실행이 아니다.
+- IVA-B001: Authorization/Bearer, 따옴표 JSON 민감 필드, 일반 password/token/query string, 한글·공백 사용자 경로의 마스킹과 회귀 사례를 추가했다.
+- IVA-B002: WinGet `0x8A15010A`의 signed `-1978334966` / unsigned `2316632330` 표현을 `REBOOT_REQUIRED`로 분류하고 전체 종료코드 2와 수동 재부팅 안내를 유지했다.
+- IVA-W001: `/notes`에서 `demo`와 `invalid`를 분리하고 invalid는 CRUD 없이 설정 오류·복구 안내를 표시한다.
+- IVA-W002: Supabase sign-out의 성공·반환 error·throw를 구분하고 local scope와 비승인 사용자 cleanup 실패 경로를 명시했다.
+- Bootstrap PowerShell 5.1/7 parser·mock run `34970656993`의 두 job이 성공했다. 앞선 run `34970081183`의 실패는 재부팅 fixture 간 상태 초기화 누락이었고 제품 분기와 별도로 테스트 격리를 수정했다.
+- Web Starter run `34970348151`에서 web / windows-node / rls-fixture 3개 job이 성공했다.
+- CI artifact의 외부 SHA-256, 내부 후보 ZIP SHA-256과 소스 tree를 직접 대조했다. 세부값은 `docs/execution/CANDIDATE_MANIFEST_20260915_CORRECTED.json`에 있다.
 
-## 다음과 막힘
+## 현재 gate와 다음
 
-다음 절차는 위 두 후보에 대한 별도 IVA 검증 및 Windows 실기/Supabase 실연결 확인이다. 이 채널을 IVA로 재명명하여 검증하지 않는다. 실제 앱은 별도 저장소 경계로 진행하며, 기존 공개 bootstrap/web-starter 안에 사진 앱이나 토큰을 섞지 않는다. 실제 앱 대상 저장소·계정 연결·실게시·예약 활성화는 아직 준비/수행되지 않았다.
+- 최초 IVA FAIL은 삭제하거나 PASS로 덮어쓰지 않는다.
+- 새 후보의 작성자 검사는 성공했지만 IVA affected-only 재검증은 `NOT_RUN`이다.
+- 두 PR은 계속 Draft·미병합이다. 재검증 전 main 병합·Template 활성화·릴리스·배포를 하지 않는다.
+- 깨끗한 Windows 11 실기, 기존 사용자 PC 보존·재실행, 실제 Supabase Auth/Storage/세션 통합은 별도 수락 gate이며 여전히 NOT_RUN/INDETERMINATE다.
+- 재검증 입력은 `docs/execution/IVA_REREVIEW_PACKET_v0.2.md`다. 전체 프로젝트 재검토가 아니라 네 finding과 실제 영향 경로만 대상이다.
 
-재개 시 최신 refs가 위 대상과 같은지 확인한다. 같으면 성공한 작성자 CI를 재사용한다. 달라졌으면 변경 부분과 대상 범위만 조정한다. 전역 재검증이나 초기 생성부터의 반복을 하지 않는다.
+EFFECT_STATE: 두 제품 작업 브랜치에 affected-only 교정과 성공 CI/artifact가 존재한다. 사용자 PC, Cloud, SNS, 제품 main에는 변경 없음.
+LAST_WORKLOG_EVENT: WORKLOG.md / E006.
+OWNER_ACTION_REQUIRED: IVA 별도 채널에 `IVA_REREVIEW_PACKET_v0.2.md`를 전달한다. 새 저장소·키·비밀번호는 필요 없다.
 
-EFFECT_STATE: 제품 코드 2개 작업 브랜치·PR 및 CI 존재; 운영 문서 현행화. 사용자 PC/Cloud/SNS 변경 없음.
-LAST_WORKLOG_EVENT: WORKLOG.md / E005.
-OWNER_ACTION_REQUIRED: 현재 복구·문서 Git 정리에 추가 입력 없음. 독립검증을 실제 시작하려면 별도 IVA 실행 경로가 필요하다.
-
-이 파일의 저장 완료는 포함된 remote commit/readback으로 판정한다. 자신의 미래 commit SHA를 예측해 쓰지 않는다. 백그라운드 작업이 예약되어 있다는 뜻이 아니다.
+이 파일의 저장 완료는 포함된 remote commit/readback으로 판정한다. 자신의 미래 commit SHA를 예측해 쓰지 않는다. 백그라우드 작업이 예약되어 있다는 뜻이 아니다.

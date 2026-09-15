@@ -1,0 +1,115 @@
+{
+  "manifestId": "MITCHELL-BW-001-CORRECTED-CANDIDATES",
+  "version": "1.0",
+  "date": "2026-09-15",
+  "writer": "MITCHELL",
+  "sourceReview": {
+    "document": "docs/execution/IVA_REVIEW_RESULT_20260915.md",
+    "commit": "d16166f8b390fb63f6332b77960171e803f5bd59",
+    "verdict": "CORRECTION_REQUIRED",
+    "findings": ["IVA-B001", "IVA-B002", "IVA-W001", "IVA-W002"]
+  },
+  "bootstrap": {
+    "repository": "AofSpds/bootstrap",
+    "branch": "work/bootstrap-v0.1",
+    "pullRequest": 1,
+    "base": "351333d6b4e6db1635c8caeb0f7dd8c4e3aee72c",
+    "firstIvaHead": "b4cabc7acb558c556a5b59a7826e43757d67eb27",
+    "correctedHead": "33b1b7e6a788d04ba61acd6c689bb5f20245116c",
+    "correctedTree": "2a28a91f8fdbbbc80bd37209206cdab9cf5e715a",
+    "correctionCommits": [
+      "4b5791ae38c6625a0955b78d7c30a6ae254380a8",
+      "33b1b7e6a788d04ba61acd6c689bb5f20245116c"
+    ],
+    "findings": ["IVA-B001", "IVA-B002"],
+    "changedCorrectionPaths": [
+      "scripts/common.ps1",
+      "scripts/install-packages.ps1",
+      "tests/run.ps1",
+      "tests/logs-and-catalogue.ps1",
+      "docs/TROUBLESHOOTING.md"
+    ],
+    "authorCi": {
+      "runId": 34970656993,
+      "event": "pull_request",
+      "conclusion": "success",
+      "jobs": {
+        "powershell-51": 104385856503,
+        "powershell-7": 104385856878
+      }
+    },
+    "interimFailedRun": {
+      "runId": 34970081183,
+      "reason": "test fixture state isolation defect after reboot case",
+      "productLogicBypass": false
+    },
+    "artifact": {
+      "id": 10396389180,
+      "name": "bootstrap-candidate",
+      "outerSha256": "021a1caf5717ae5e05ffa6800a940bb8035ec466d0c28dca17af1f113b8cd6c7",
+      "innerCandidateZipSha256": "a65cb366a9ccc5ae1de0ea0878649a45c590c507634deb10a573c27191a919e6",
+      "evidenceMergeCommit": "baa43bcf5ecd0e0439e6b680b8df04da36588aa7",
+      "sourceFileCount": 19,
+      "identity": "EXACT_TREE_AFTER_11_TEXT_CRLF_TO_LF_NORMALIZATIONS_AND_RAW_BOOTSTRAP_BAT",
+      "verifiedTree": "2a28a91f8fdbbbc80bd37209206cdab9cf5e715a"
+    }
+  },
+  "webStarter": {
+    "repository": "AofSpds/web-starter",
+    "branch": "work/web-starter-v0.1",
+    "pullRequest": 1,
+    "base": "0d855cd9aaf1ee8ebf31a2a7af6d67c90367d0d6",
+    "firstIvaHead": "15efb21e9cf3c4ba60c34af95f928ba38221a224",
+    "correctedHead": "a2c63cca6bdbf0667ba2d9e1c8d8e7af2e137a17",
+    "correctedTree": "34716ab2e0f82f625f6f6ada1cf0c205d665da51",
+    "correctionCommits": [
+      "a2c63cca6bdbf0667ba2d9e1c8d8e7af2e137a17"
+    ],
+    "findings": ["IVA-W001", "IVA-W002"],
+    "changedCorrectionPaths": [
+      "src/components/notes-configuration-state.tsx",
+      "src/lib/auth-session.ts",
+      "src/app/notes/page.tsx",
+      "src/app/login/actions.ts",
+      "src/app/login/page.tsx",
+      "tests/unit/notes-configuration-state.test.ts",
+      "tests/unit/auth-session.test.ts",
+      "docs/RECOVERY.md"
+    ],
+    "authorCi": {
+      "runId": 34970348151,
+      "event": "pull_request",
+      "conclusion": "success",
+      "jobs": {
+        "web": 104384824185,
+        "windows-node": 104384824285,
+        "rls-fixture": 104384824076
+      }
+    },
+    "artifact": {
+      "id": 10396488405,
+      "name": "web-starter-candidate",
+      "outerSha256": "416622c3d094662098722ff882f7a57bbbababa062c61705a259d4864f6b8be0",
+      "innerCandidateZipSha256": "a8f85ab275c718727099136b235cf5bd7fa57362f1be7304a7f52368ea34c4df",
+      "browserReportArtifactId": 10396478506,
+      "browserReportOuterSha256": "72e12c06c99e5c1ff124b5efafb21bd886e50fa1ff700a194529287ab5708c66",
+      "evidenceMergeCommit": "ef61f2f6f84bce0b591da06c4ba5f37c6b69a19d",
+      "sourceFileCount": 57,
+      "identity": "EXACT_TREE_FROM_EXTRACTED_SOURCE_BYTES",
+      "verifiedTree": "34716ab2e0f82f625f6f6ada1cf0c205d665da51"
+    }
+  },
+  "gates": {
+    "authorCorrections": "COMPLETED",
+    "authorCi": "SUCCESS",
+    "affectedOnlyIvaRereview": "NOT_RUN",
+    "cleanWindowsAcceptance": "NOT_RUN",
+    "existingWindowsAcceptance": "NOT_RUN",
+    "liveSupabaseIntegration": "NOT_RUN",
+    "productMerge": "NOT_DONE",
+    "templateEnablement": "NOT_DONE",
+    "release": "NOT_DONE",
+    "deployment": "NOT_DONE",
+    "pmoRuntime": "NOT_DISPATCHED"
+  }
+}
