@@ -1,6 +1,6 @@
 # MITCHELL 프로젝트 운영 계약
 
-Version: 1.0 / 2026-09-15
+Version: 1.1 / 2026-09-15
 
 이 문서는 MITCHELL에 적용하는 최소 현지 운영정책이다. HLOM의 공통 원칙을 선택적으로 참조한 것이며 HLOM/AAA의 조직·실행권한·제품을 이식한 것이 아니다. 상위 플랫폼 지침과 현재 사용자의 명시적 지시가 우선한다.
 
@@ -72,6 +72,33 @@ Persona는 프로젝트 이름까지 포함하여 식별한다. 다른 프로젝
 한국어를 기본으로 하고 필요한 기술 식별자는 유지한다. 목적·현재·실제 완료·다음·막힘·사용자 행동을 먼저 설명한다. 진행률은 실제 완료된 단계 분모가 있을 때만 표시한다. 구현·Git 저장·검증·사용자 수락·병합·배포를 별개로 보고한다.
 
 전달이 필요한 경우 FROM/TO, 정확한 대상 ref, 승인 범위, 금지 범위, 기대 반환물을 하나의 패킷에 모은다. 같은 내용을 여러 문서에 전문 복제하지 않는다. 정상 작업은 다음 사용자 행동을 하나로 압축한다. 행동이 필요 없으면 없다고 명시하고 대기 중인 자동 작업을 꾸며내지 않는다.
+
+### IVA 최종 반환 계약
+
+IVA 작업의 최종 반환은 항상 **MITCHELL에 그대로 복사해 전달할 수 있는 인계 패킷**이어야 한다.
+
+검증 결과가 길면 상세 보고서는 Git에 기록하고, 채팅에는 해당 Git 경로와 핵심 판정을 담은 반환 패킷만 제공하는 것을 기본으로 한다. 채팅 패킷은 상세 보고서를 대체하거나 판정을 축약·변경하지 않는다.
+
+최종 반환 패킷은 최소한 다음을 포함한다.
+
+- `PACKET_ID`, 버전, 날짜, FROM, TO, PROJECT
+- 검증 완료·교정 필요·PASS·HOLD 등 정확한 상태
+- Repository, branch/PR, exact head/tree
+- finding별 `PASS / FAIL / INDETERMINATE / NOT_RUN`
+- 상세 결과의 Git 경로, commit, blob
+- `MERGE_RECOMMENDATION` 및 release/deploy 구분
+- Windows·Supabase 등 실제로 수행하지 않은 범위
+- 수정·병합·배포·계정 변경의 수행 여부와 권한 경계
+- MITCHELL이 취할 정확한 다음 조치
+
+```text
+RETURN_PACKET_REQUIRED = ALWAYS
+DETAILED_RESULT_TO_GIT = YES
+CHAT_RETURN_PACKET_ONLY = DEFAULT
+RULE_EFFECTIVE = IMMEDIATE
+```
+
+원 규칙 패킷은 `docs/execution/IVA_RETURN_PACKET_RULE_20260915.md`에 보존한다.
 
 ## 8. 출처와 적합성 한계
 

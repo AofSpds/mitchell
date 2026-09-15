@@ -2,6 +2,22 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E009 — IVA 최종 반환 패킷 규칙 반영 / 2026-09-15
+
+- 사용자가 `MITCHELL-IVA-RETURN-PACKET-RULE-ACK` 패킷을 전달했다.
+- IVA의 최종 반환은 항상 MITCHELL에 그대로 전달 가능한 인계 패킷 형식으로 하도록 운영 계약에 반영했다.
+- 상세 검증 결과가 길면 Git에 원문을 기록하고, 채팅에는 Git 경로와 핵심 판정·exact 대상·finding별 결과·merge 권고·미실행·권한 경계·다음 조치를 담은 패킷만 반환한다.
+- 원문 패킷은 `docs/execution/IVA_RETURN_PACKET_RULE_20260915.md`에 보존했다.
+- 제품 코드, PR, CI, 사용자 PC, Cloud, SNS에는 변경하지 않았다.
+
+## E008 — affected-only IVA 재검증 결과 기록 / 2026-09-15
+
+- IVA가 `docs/execution/IVA_AFFECTED_ONLY_REREVIEW_RESULT_20260915.md`를 Git에 기록했다.
+- exact corrected candidates의 `IVA-B001`, `IVA-B002`, `IVA-W001`, `IVA-W002`가 모두 PASS였고 새 finding은 없었다.
+- `MERGE_RECOMMENDATION = PASS`이나 실제 Windows·Supabase 통합은 `NOT_RUN / INDETERMINATE`, release/deploy는 `HOLD`다.
+- 결과 commit은 `8919c23eef0d8b845e5c8cd66e89f7be85209154`, 결과 blob은 `be514d035fde03370db0c6ad90bfa916c0ffbe79`다.
+- 제품 PR은 계속 Draft·미병합이며 제품 main, 사용자 PC, Cloud, SNS에는 변경이 없다.
+
 ## E007 — Exact head 안정화와 UTF-8 복구 / 2026-09-15
 
 - PR 설명 현행화 중 `NONEXISTENT` placeholder가 commit `fc52d761e7fcd97ffab29f42cce6f1e7c7fbfd41`에 생성됐고, 확인 즉시 `f880d0297e4d092c0f7d5025ff42cc7648fb66aa`에서 삭제했다.
