@@ -1,0 +1,24 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+.secrets/
+.local/
+private/
+*.pem
+*.key
+
+# Runtime logs and personal assets
+*.log
+logs/
+photos/
+uploads/
+downloads/
+
+# Build and editor-local output
+node_modules/
+.next/
+dist/
+coverage/
+.DS_Store
+Thumbs.db
