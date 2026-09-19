@@ -2,6 +2,22 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E016 — SNS Gateway PR #1 Owner 승인 병합 / 2026-09-19
+
+Actor: MITCHELL. PMO NOT_DISPATCHED.
+Recovery base: mitchell@61cf86d48c839f647c49ff52a90107778b8a5ad6 / sns-gateway PR#1 head 4ab10f481f7da66c00591ebd6cf597de527b901c.
+
+- 사용자가 병합 여부 처분 요청에 ‘진행하세요’라고 승인했다.
+- 병합 직전 PR #1이 OPEN/DRAFT, mergeable=true이고 head가 IVA affected-only PASS 대상 4ab10f48…와 일치하며 CI35439466823이 SUCCESS임을 다시 확인했다.
+- Draft를 ready-for-review로 전환한 뒤 expected_head_sha=4ab10f48…를 고정하고 merge commit 방식을 사용했다.
+- GitHub merge 결과 merged=true, merge commit=1c7cd117d18929cdf40abc0e4f73fec4c87b2c65. 원격 sns-gateway/main readback도 같은 SHA이며 PR #1은 MERGED/CLOSED다.
+- 최초 cf6967ce 후보 FAIL과 후속 F001–F004 affected-only PASS 계보는 그대로 보존한다. 병합 자체를 최초 FAIL의 소급 변경으로 표현하지 않는다.
+- RELEASE_DEPLOY_RECOMMENDATION=HOLD, SGV-04 INDETERMINATE, DEVICE_SNS_ACCEPTANCE=NOT_RUN/INDETERMINATE를 유지한다.
+- 제품 코드를 병합 후 추가 수정하지 않았고 사용자 기기·개인사진·계정·키·SNS 실제 전송/게시·서명 설치·release/deploy는 수행하지 않았다.
+
+Result: AofSpds/sns-gateway main@1c7cd117d18929cdf40abc0e4f73fec4c87b2c65 / PR#1 MERGED.
+Next: 실제 iPhone/Galaxy 수락과 승인된 서명/설치 준비. release/deploy는 계속 HOLD.
+
 ## E015 — SNS Gateway IVA-002 affected-only PASS 수신 / 2026-09-19
 
 Actor: MITCHELL. PMO NOT_DISPATCHED. 제품 merge/release/deploy 미수행.

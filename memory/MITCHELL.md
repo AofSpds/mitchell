@@ -2,12 +2,12 @@
 
 PROJECT_ID: MITCHELL
 PERSONA_ID: MITCHELL
-GENERATION: 8
-MEMORY_DELTA_ID: MITCHELL-MEM-008
-EXPECTED_GENERATION: 7
-EXPECTED_BASE_COMMIT: 13d5befecca9c1dfb27c67b2572c729b601f62bc
+GENERATION: 9
+MEMORY_DELTA_ID: MITCHELL-MEM-009
+EXPECTED_GENERATION: 8
+EXPECTED_BASE_COMMIT: 61cf86d48c839f647c49ff52a90107778b8a5ad6
 SEMANTIC_OWNER / WRITER: MITCHELL / MITCHELL
-SOURCE: 2026-09-19 SNS Gateway F001–F004 affected-only IVA PASS 수신과 merge/release 경계
+SOURCE: 2026-09-19 SNS Gateway affected-only IVA PASS 후 Owner 승인 PR #1 병합
 PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 
 ## 지속 목적
@@ -48,7 +48,7 @@ Android 쓰기 중단의 엄격한 UUID.tmp도 관리 사진 사본이다. inven
 
 메인 MITCHELL, Codex WORK 작업자 PMO, 독립 검증자 IVA. 다른 Persona/페어 검증자는 미설치다. 사용자는 현재 MITCHELL 채널에서 직접 Git 업무를 진행하도록 지시했으며 PMO로 임의 이관하지 않는다.
 
-PMO는 NOT_DISPATCHED다. B/W와 SNS Gateway 최초 독립검증은 별도 IVA에서 수행되어 Git에 기록됐다. MITCHELL은 IVA로 이름을 바꾸지 않고 결과를 수신·교정한다. SNS Gateway 최초 IVA-002의 cf6967ce 후보 FAIL/HOLD는 역사적으로 보존한다. 후속 exact 교정 후보 4ab10f48…의 F001–F004 affected-only IVA는 모두 PASS, 신규 finding NONE, MERGE_RECOMMENDATION PASS다. SGV-04와 실제 기기/SNS는 INDETERMINATE/NOT_RUN, release/deploy는 HOLD다. 이 결과 자체를 merge·release·deploy 실행권한으로 취급하지 않는다.
+PMO는 NOT_DISPATCHED다. B/W와 SNS Gateway 최초 독립검증은 별도 IVA에서 수행되어 Git에 기록됐다. MITCHELL은 IVA로 이름을 바꾸지 않고 결과를 수신·교정한다. SNS Gateway 최초 IVA-002의 cf6967ce 후보 FAIL/HOLD는 역사적으로 보존한다. 후속 exact 교정 후보 4ab10f48…의 F001–F004 affected-only IVA는 모두 PASS, 신규 finding NONE, MERGE_RECOMMENDATION PASS다. SGV-04와 실제 기기/SNS는 INDETERMINATE/NOT_RUN, release/deploy는 HOLD다. affected-only PASS 자체는 merge·release·deploy 실행권한이 아니었고, 사용자의 별도 merge 승인에 따라 PR #1만 main에 병합했다. release/deploy·실기 설치·SNS 공개 권한은 여전히 별도다.
 
 ## 기존 IVA 상태와 반환 계약
 
@@ -64,7 +64,7 @@ IVA 최종 반환은 항상 MITCHELL에 복사 가능한 인계 패킷이다. �
 
 ## 재발 방지
 
-CI green은 독립검증·실제 기기·계정·배포 PASS가 아니다. 지정된 finding을 고칠 때 최초 판정/exact 대상은 보존하고 affected-only로 원인을 제거한 뒤 새 대상을 고정한다. 전체 프로젝트 무정보 반복 검증은 하지 않는다. 동일 4ab10f48 후보의 F001–F004 affected-only 재검증도 반복하지 않으며 이후 후보가 바뀌면 변경 영향만 확인한다.
+CI green은 독립검증·실제 기기·계정·배포 PASS가 아니다. 지정된 finding을 고칠 때 최초 판정/exact 대상은 보존하고 affected-only로 원인을 제거한 뒤 새 대상을 고정한다. 전체 프로젝트 무정보 반복 검증은 하지 않는다. 동일 4ab10f48 후보의 F001–F004 affected-only 재검증도 반복하지 않으며 이후 후보가 바뀌면 변경 영향만 확인한다. 검증 후보는 Owner 승인으로 merge commit 1c7cd117…을 통해 sns-gateway main에 포함됐다.
 
 로그 마스킹은 Authorization/Bearer·quoted JSON·password/key·query·사용자 경로의 구조별 회귀 사례로 확인한다. WinGet HRESULT는 signed/unsigned를 정규화하며 자동 재부팅하지 않는다. DEMO와 invalid를 구분하고 Supabase logout은 SDK error/throw와 local scope를 명시한다. 테스트 fixture의 사례 간 상태를 초기화한다.
 
