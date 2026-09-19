@@ -2,6 +2,22 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E015 — SNS Gateway IVA-002 affected-only PASS 수신 / 2026-09-19
+
+Actor: MITCHELL. PMO NOT_DISPATCHED. 제품 merge/release/deploy 미수행.
+Recovery base: mitchell@13d5befecca9c1dfb27c67b2572c729b601f62bc / sns-gateway@4ab10f481f7da66c00591ebd6cf597de527b901c.
+
+- IVA 반환 패킷에 따라 결과 원문 docs/execution/SNS_GATEWAY_IVA002_AFFECTED_REREVIEW_RESULT_20260919.md를 exact commit/blob으로 직접 읽고 원격 main을 확인했다.
+- SGV-F001/F002/F003/F004는 모두 PASS, affected scope 신규 finding NONE, IVA_AFFECTED_REREVIEW=PASS다.
+- MERGE_RECOMMENDATION=PASS를 수신했으나 실제 병합 권한/실행과 구분한다. RELEASE_DEPLOY_RECOMMENDATION=HOLD, DEVICE_SNS_ACCEPTANCE=NOT_RUN/INDETERMINATE를 유지한다.
+- 최초 cf6967ce 후보의 FAIL과 최초 결과 문서는 역사적 판정으로 보존하고 4ab10f48 교정 후보에 한해서 후속 PASS를 기록한다.
+- IVA는 작성자 CI35439466823을 재사용 증거로 구분하고 exact 제품 코드/SQLite·Kotlin/JVM·Swift Foundation의 신규 합성 시나리오46개를 수행해46 PASS/0 FAIL을 기록했다. 실제 기기 시험으로 확대하지 않는다.
+- 동일 후보의 F001–F004 재검증은 반복하지 않는다. 후보가 바뀌면 affected-only로 변경 영향만 확인한다.
+- MITCHELL 소유 CURRENT/DECISIONS/WORKLOG/지속 기억을 정제 delta로 현행화하고 PR 설명을 재검증 PASS 상태로 갱신한다. 제품 코드·제품 main·기기·SNS·계정·키·서명·릴리스·배포는 변경하지 않는다.
+
+Result: docs/execution/SNS_GATEWAY_IVA002_AFFECTED_REREVIEW_RESULT_20260919.md @ 13d5befecca9c1dfb27c67b2572c729b601f62bc / blob b61e82a87a534193ab50c420152df145319e7558.
+Next: 별도 Owner merge disposition. 실기/SNS·서명·release/deploy는 별도 gate.
+
 ## E014 — SNS Gateway IVA-002 수신 및 F001–F004 affected-only 교정 / 2026-09-19
 
 Actor: MITCHELL. PMO NOT_DISPATCHED. 새 교정 후보의 IVA 재검증 NOT_RUN.
