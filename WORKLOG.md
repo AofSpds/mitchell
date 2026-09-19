@@ -2,6 +2,24 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E014 — SNS Gateway IVA-002 수신 및 F001–F004 affected-only 교정 / 2026-09-19
+
+Actor: MITCHELL. PMO NOT_DISPATCHED. 새 교정 후보의 IVA 재검증 NOT_RUN.
+Recovery base: mitchell@5133d5fe9af59b8ed06e7bf7bedba29108c10c79 / sns-gateway@cf6967ce920793a72f88da746af4d0a317e61ed8.
+
+- 사용자 전달 패킷에 따라 IVA 결과 v1.0.1을 exact commit/blob으로 직접 읽었다. 최초 candidate FAIL, F001–F004 P2, MERGE/RELEASE HOLD와 SGV별 판정을 보존한다.
+- 기존 Owner 실행 승인(D021) 안의 국소 교정으로 처리했다. 수신 CURRENT Generation9는 edd19651259193be0320197bda26cc8d448153ce에 먼저 기록했다. 결과 패킷을 새 실행권한이나 전체 재구현 지시로 취급하지 않았다.
+- 영속 순환 재시도, 미확인/전체 이력 keyset cursor와 UI, Android UUID.tmp 관리, Kotlin/Swift I/O 오류·확정 부재 분리 및 reset 최종 재확인을 구현했다. 원본·미확인 공유 보호를 완화하지 않았다.
+- 제품 교정은 19파일 +642/-100, exact head9847200c2448e98ebe0f9812cee813285dbbe865, tree a7d76e5b74713239bb8e11e6ea1a9fe613d1e92b다. 기존 잠금 의존성·알림·공유 모드는 유지했다.
+- TypeScript/SQLite 표적42개, 확장된 전체 Node110개, Kotlin/JVM filesystem+Android Os shim23개, Swift Foundation 신규16개와 기존6개를 작성자로 점검했다. Kotlin은 실제 기기 Os 실행이 아니며 권한 실패는 비특권 격리 환경에서 시험했다.
+- Android minSdk24와 충돌하는 NIO API26 의존을 도입하지 않고 API21+ Os 경로로 교정했다. 이는 기능 확장이 아니라 교정 코드의 기존 지원범위 유지다.
+- 새 CI35438877502의 실제 최종 결과와 artifact는 교정 완료보고/Manifest가 소유한다. 이전 후보의 유효 CI35433487023은 재실행하지 않았다.
+- 새 source artifact10583013453의 외부/내부 SHA, 파일75개와 Git tree를 확인하고 전체 파일 바이트가 로컬 검사 소스와 일치함을 대조했다. 받은 소스에서 표적42개도 통과했다.
+- 최초 IVA 결과 문서는 수정하지 않았다. 작성자 완료와 새 exact 후보를 고정하고 F001–F004 affected-only 재검증 패킷으로 반환한다. 실제 기기/SNS·독립 재검증·서명·병합·배포는 수행하지 않았다. bootstrap/web-starter 변경 없음.
+
+Results: docs/execution/SNS_GATEWAY_IVA002_CORRECTION_COMPLETION_20260919.md, SNS_GATEWAY_IVA002_CORRECTED_MANIFEST_20260919.json, SNS_GATEWAY_IVA_AFFECTED_REREVIEW_PACKET_v0.3.md.
+Next: 새 후보의 별도 IVA affected-only 재검증. 작성자 검사 통과는 최초 FAIL의 소급 변경이나 독립 PASS가 아니다.
+
 ## E013 — SNS Gateway 남은 네 코드 영역 구현·작성자 검사 / 2026-09-19
 
 Actor: MITCHELL

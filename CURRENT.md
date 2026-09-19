@@ -1,55 +1,56 @@
 # MITCHELL Current
 
-Updated: 2026-09-19 / Generation: 9 / Writer: MITCHELL
-Expected previous generation: 8
-Recovery base: 5133d5fe9af59b8ed06e7bf7bedba29108c10c79
+Updated: 2026-09-19 / Generation: 10 / Writer: MITCHELL
+Expected previous generation: 9
+Recovery base: edd19651259193be0320197bda26cc8d448153ce
 
 ## 목적·현재
 
-별도 IVA의 SNS Gateway 최초 독립검증 결과를 exact commit으로 직접 읽고 수신했다. 현재 작성자는 MITCHELL이며 기존 Owner 실행 승인(D021/D022)의 구현 교정 범위 안에서 SGV-F001–F004만 처리한다. 결과 패킷 자체를 새 권한으로 해석하지 않는다. 제품 전체 재구현·기존 유효 검증의 무정보 반복·PMO 자동 이관은 하지 않는다.
+별도 IVA의 SNS Gateway 최초 검증 FAIL을 수신하고 SGV-F001–F004만 교정했다. 현재 상태는 작성자 교정·검사 완료 후보이며 별도 IVA affected-only 재검증은 NOT_RUN이다. 최초 FAIL과 MERGE/RELEASE HOLD를 유지한다. 현재 채널의 작성자는 MITCHELL이며 PMO로 이관하지 않았다.
 
 | 항목 | 현재 값 |
 |---|---|
 | Task | SNSG-IVA002-CORRECTION-001 |
-| Persona / writer | MITCHELL / 현재 채널 직접 수행 |
-| IVA 결과 | REVIEW_COMPLETED / CORRECTION_REQUIRED |
-| 결과 exact commit | 5133d5fe9af59b8ed06e7bf7bedba29108c10c79 |
-| 결과 문서 | docs/execution/SNS_GATEWAY_IVA_RESULT_002_20260919.md v1.0.1 |
-| 결과 blob | 575fbf734d47484a14a6d3fd8a1a79db736be60f |
-| 검증 후보 | sns-gateway@cf6967ce920793a72f88da746af4d0a317e61ed8 |
-| 검증 tree | c13cb960d960f57979df4a18a7a3236225be52e6 |
-| Branch / PR | work/sns-gateway-v0.1 / #1 OPEN·DRAFT·UNMERGED, 수신 시 head 일치 |
-| 최초 SNS Gateway 판정 | FAIL |
-| 교정 진행 | SOURCE_RECOVERED / IMPLEMENTATION_PENDING |
-| MERGE / RELEASE_DEPLOY | HOLD / HOLD |
-| 실제 기기·SNS | NOT_RUN / INDETERMINATE |
+| 실행 근거 | 기존 사용자 구현·계속 지시 D021 및 F001–F004 교정 처분 D024 |
+| 원 IVA 결과 | docs/execution/SNS_GATEWAY_IVA_RESULT_002_20260919.md v1.0.1 |
+| 원 결과 commit / blob | 5133d5fe9af59b8ed06e7bf7bedba29108c10c79 / 575fbf734d47484a14a6d3fd8a1a79db736be60f |
+| 원 검증 후보 | cf6967ce920793a72f88da746af4d0a317e61ed8 / FAIL |
+| 제품 / Branch / PR | AofSpds/sns-gateway / work/sns-gateway-v0.1 / #1 OPEN·DRAFT·UNMERGED |
+| 새 교정 head | 4ab10f481f7da66c00591ebd6cf597de527b901c |
+| 새 교정 tree | caa83524a6118272952fd669d225d253dd477edb |
+| 제품 main (변경 없음) | 13d83595e31867c24fb8154074a7ad76d5995f95 |
+| 최종 작성자 CI | 35439466823 / checks / android / ios-simulator 모두 SUCCESS |
+| 작성자 시험 | 표적 TS/SQLite42개, 확장 Node110개, Kotlin/JVM23개, Swift 신규16+기존6개 PASS |
+| 독립 재검증 / 실제 기기·SNS | NOT_RUN / NOT_RUN·INDETERMINATE |
 | PMO / 기타 Persona | NOT_DISPATCHED / NOT_INSTALLED |
+| 제품 병합 / release·deploy | NOT_DONE·HOLD / NOT_DONE·HOLD |
 
-## 교정 묶음
+## 교정한 네 실패 경로
 
-- SGV-F001 (P2): 실패한 선두 10개가 다음 정상 사진을 막는 pending 처리. 실패 이력과 FIRST_OBSERVED 의미를 보존하는 공정한 순환을 구현한다.
-- SGV-F002 (P2): 최근 100건 밖의 미확인 공유를 해결할 UI가 없음. 모든 미확인 이력 및 이전 이력에 접근하는 안정적인 cursor 목록을 추가하되 초기화 보호를 제거하지 않는다.
-- SGV-F003 (P2): Android 중단 import의 UUID.tmp가 inventory·용량·삭제에서 누락됨. 엄격한 앱 소유 임시 파일 계약과 중단 복구를 추가한다.
-- SGV-F004 (P2): Kotlin/Swift 파일 접근·열거 오류가 빈 목록/삭제 성공으로 바뀜. 확정된 부재와 I/O 실패를 구분하고 불완전한 정리의 journal/reset_pending을 보존한다.
+- F001: 실패 pending의 순환 차례·횟수·마지막 결과를 DB에 보존하고 native 호출 전에 차례를 옮겨 후속 정상 사진도 처리한다. baseline/등록일/실패 이력은 유지한다.
+- F002: 미확인·오류/전체 이력 필터와 안정적인 이전 페이지를 제공한다. 100건 밖 및205개 미확인 이력에 접근할 수 있으며 삭제 보호를 제거하지 않았다.
+- F003: Android의 엄격한 UUID.tmp 중단 사본을 inventory·용량·초기화에 포함한다. active writer와 최근 tmp는 보호하며 비활성 중단 tmp는1시간 유예 후 정리한다. 공유 staging의7일 유예와 다르다.
+- F004: 열거/metadata/삭제 오류와 확정된 부재를 구분한다. DB-known URI도 journal에 남기고 마지막 완전 inventory가 비어야 초기화를 완료한다. 실패/부분완료 시 reset_pending을 유지한다.
 
-F003/F004는 파일 관리·초기화 경계로 함께 수정하되 개별 재현 조건을 유지한다. 작성자 표적 검사 → 완료보고 → 새 exact head/tree → 별도 IVA affected-only 재검증 순서다. 최초 FAIL을 삭제하거나 작성자 검사로 독립 PASS로 덮어쓰지 않는다.
+SQLite migration4는 부가 retry 테이블과 이력 index만 추가한다. 기존 원본·등록일·revision·공유 snapshot·미확인 보호는 유지한다. 상세 교정·표적 시험은 아래 보고서가 소유한다.
 
-## 기존 증거·구현 보존
+첫 교정9847200c의 CI35438877502는 checks/iOS 성공, Android Os.unlink 공개 심볼 오류로 실패했다. 공개 Os.remove와 전후 lstat로 수정한4ab10f48가 최종 후보이며 중간 실패는 이력에 보존한다. Kotlin shim 시험을 실제 Android SDK/실기 성공으로 취급하지 않는다. Android minSdk24, 의존성 잠금, 알림·SNS 공유 방식은 그대로다.
 
-기존 후보에는 로컬 사진 가져오기·게시함·소스 연결·날짜별 revision·오래된 알림 날짜·보존 관리 코드가 있다. 네 지적은 특정 실패·누적·중단 조건의 결함이며 네 기능이 없다는 뜻이 아니다.
+## 증거·보고서·다음
 
-기존 작성자 CI35433487023의 checks/android/ios-simulator, Node94개/Swift6개 및 artifact 동일성은 해당 후보의 증거로 보존한다. IVA는 별도 TS/SQLite·Kotlin/JVM·Swift Foundation 경계 fixture를 실행했다. 원 보고서 SGV-01/03/08 PASS, SGV-02/05/06/07 FAIL, SGV-04 INDETERMINATE의 범위를 보존하며 실기 PASS로 확대하지 않는다.
+- 작성자 교정 보고: docs/execution/SNS_GATEWAY_IVA002_CORRECTION_COMPLETION_20260919.md
+- exact candidate/CI/artifact: docs/execution/SNS_GATEWAY_IVA002_CORRECTED_MANIFEST_20260919.json
+- IVA affected-only 입력: docs/execution/SNS_GATEWAY_IVA_AFFECTED_REREVIEW_PACKET_v0.3.md
+- 과거 작성자 보고/Manifest/IVA v0.2는 당시 후보의 기록으로 보존한다.
 
-과거 작성자 보고: docs/execution/SNS_GATEWAY_LIFECYCLE_COMPLETION_20260919.md
-과거 Manifest: docs/execution/SNS_GATEWAY_LIFECYCLE_MANIFEST_20260919.json
-과거 IVA 입력: docs/execution/SNS_GATEWAY_IVA_PACKET_v0.2.md
-기준 설계: docs/mobile/LOCAL_SHARING_DESIGN_v1.0_20260919.md
+최종 source artifact75개 파일을 로컬 검사 소스 및 Git tree와 대조하고 그 소스의 표적42개 시험을 확인했다. 원 후보 CI35433487023은 재실행하지 않았다. 새 후보의 공통 저장·파일 경계에 대한 작성자 회귀와 native 빌드이며 전역 독립검증 반복이 아니다.
 
-## 권한·다음
+다음은 새 exact 후보의 F001–F004 affected-only 재검증이다. 첫 IVA의 SGV-01/03/08 PASS와 SGV-04 INDETERMINATE 범위를 소급 변경하지 않는다. 실제 PhotoKit/SAF·권한·알림·SNS·메타데이터·백업 수락은 여전히 미실행이다. Android unsigned APK와 iOS simulator .app은 실제 기기 설치·서명·배포 완료본이 아니다.
 
-서버·외부 사진 저장소·SNS HTTP API/OAuth·API 키·앱 로그인 없음. 사용자 foreground 공유와 공식 SNS 앱 최종 수동 게시 계약을 유지한다. 휴대폰 원본은 읽기만 하고 관리 사본만 삭제한다. 기존 bootstrap/web-starter는 변경하지 않는다.
+## 권한·보존
 
-제품 main13d83595e31867c24fb8154074a7ad76d5995f95, PR Draft와 미병합 상태를 유지한다. 실제 기기·계정·개인 사진·서명·SNS 전송/게시·릴리스·배포 변경은 수행하지 않는다. Android unsigned APK 및 iOS simulator .app은 기기 수락 완료본이 아니다.
+서버·외부 사진 Storage·SNS HTTP API/OAuth·API 키·앱 로그인 없음. 최종 게시 수동이며 API 키 등록은 불필요하다. 실제 기기·개인사진·계정·SNS 전송·게시·서명·제품 main·릴리스·배포에는 변경하지 않았다. 기존 bootstrap/web-starter 및 그 과거 IVA 결과도 변경하지 않았다.
 
-EFFECT_STATE: IVA 결과 수신과 MITCHELL CURRENT 현행화. 이 기록 시점 제품 코드는 아직 미변경.
-OWNER_ACTION_REQUIRED: 현재 교정 작업에는 없음. API 키·비밀번호·새 저장소 불필요.
+EFFECT_STATE: sns-gateway 교정 작업 브랜치·작성자 CI·Draft PR와 MITCHELL 수신/완료 기록만 변경.
+LAST_WORKLOG_EVENT: E014 (초기 교정); 중간 빌드 교정과 최종 후보는 본 CURRENT 및 교정 완료보고에 보존.
+OWNER_ACTION_REQUIRED: 새 IVA affected-only 패킷을 별도 IVA 채널에 전달. API 키·비밀번호·새 저장소는 불필요.

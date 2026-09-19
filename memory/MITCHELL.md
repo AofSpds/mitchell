@@ -2,12 +2,12 @@
 
 PROJECT_ID: MITCHELL
 PERSONA_ID: MITCHELL
-GENERATION: 6
-MEMORY_DELTA_ID: MITCHELL-MEM-006
-EXPECTED_GENERATION: 5
-EXPECTED_BASE_COMMIT: 5b11e3e39191df8a65fd8008665b93370a9ad75b
+GENERATION: 7
+MEMORY_DELTA_ID: MITCHELL-MEM-007
+EXPECTED_GENERATION: 6
+EXPECTED_BASE_COMMIT: edd19651259193be0320197bda26cc8d448153ce
 SEMANTIC_OWNER / WRITER: MITCHELL / MITCHELL
-SOURCE: 2026-09-19 SNS Gateway 실행·계속 지시, 로컬 게시함 후보와 후속 소스/날짜/보존 구현
+SOURCE: 2026-09-19 SNS Gateway IVA-002 결과 수신과 기존 실행 승인 범위의 F001–F004 교정
 PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 
 ## 지속 목적
@@ -38,11 +38,17 @@ PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 
 이 구현의 정확한 한도·head·시험결과는 CURRENT와 완료보고가 소유한다. ‘남은 네 코드 영역 구현 완료’와 ‘친구가 바로 설치해 사용할 완성품’은 다르다. API 키가 없어서 미완성인 것처럼 설명하지 않는다.
 
+### IVA-002로 추가된 재발 방지
+
+실패한 앞쪽 항목이 다음 정상 사진을 막지 않도록 native I/O 전에 영속 순환 차례를 기록한다. 실패 이력과 PENDING을 성공으로 위장하지 않는다. 이력 목록에는 전체 미확인 및 안정적인 이전 페이지 조회가 있어야 하며, LIMIT을 늘리거나 삭제 보호를 없애는 것으로 접근 문제를 덮지 않는다.
+
+Android 쓰기 중단의 엄격한 UUID.tmp도 관리 사진 사본이다. inventory·용량·초기화에 포함하고 active writer와 최근 사본은 보호한다. 파일 열거 실패와 접근 거부를 빈 목록/이미 삭제됨으로 취급하지 않는다. 확정된 ENOENT만 부재이며 불확실한 삭제·초기화는 journal을 유지한다. 최종 완전한 inventory가 비어야 초기화를 완료한다. UI의 완료 표시·DB 정리와 실제 파일 효과를 분리해 검사한다.
+
 ## 역할·채널
 
 메인 MITCHELL, Codex WORK 작업자 PMO, 독립 검증자 IVA. 다른 Persona/페어 검증자는 미설치다. 사용자는 현재 MITCHELL 채널에서 직접 Git 업무를 진행하도록 지시했으며 PMO로 임의 이관하지 않는다.
 
-PMO는 NOT_DISPATCHED다. B/W 최초 IVA 검증과 affected-only 재검증은 별도 IVA 대화에서 수행되어 Git에 기록됐다. MITCHELL은 IVA로 이름을 바꾸지 않고 결과를 수신·정리한다. SNS Gateway의 별도 IVA 검증은 NOT_RUN이다.
+PMO는 NOT_DISPATCHED다. B/W와 SNS Gateway 최초 독립검증은 별도 IVA에서 수행되어 Git에 기록됐다. MITCHELL은 IVA로 이름을 바꾸지 않고 결과를 수신·교정한다. SNS Gateway 최초 IVA-002는 F001–F004에 의해 FAIL/HOLD이며 후속 교정 후보의 독립 재검증은 NOT_RUN이다. 결과 자체를 새 실행권한으로 취급하지 않는다.
 
 ## 기존 IVA 상태와 반환 계약
 

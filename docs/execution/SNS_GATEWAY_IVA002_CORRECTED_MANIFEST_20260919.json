@@ -1,0 +1,122 @@
+{
+  "manifest_id": "SNSG-IVA002-CORRECTED-MANIFEST-001",
+  "version": "1.0",
+  "date": "2026-09-19",
+  "writer": "MITCHELL",
+  "repository": "AofSpds/sns-gateway",
+  "branch": "work/sns-gateway-v0.1",
+  "pr": 1,
+  "head": "4ab10f481f7da66c00591ebd6cf597de527b901c",
+  "tree": "caa83524a6118272952fd669d225d253dd477edb",
+  "parent": "9847200c2448e98ebe0f9812cee813285dbbe865",
+  "reviewed_base": "cf6967ce920793a72f88da746af4d0a317e61ed8",
+  "main_unchanged": "13d83595e31867c24fb8154074a7ad76d5995f95",
+  "original_iva": {
+    "commit": "5133d5fe9af59b8ed06e7bf7bedba29108c10c79",
+    "path": "docs/execution/SNS_GATEWAY_IVA_RESULT_002_20260919.md",
+    "blob": "575fbf734d47484a14a6d3fd8a1a79db736be60f",
+    "version": "1.0.1",
+    "candidate": "FAIL",
+    "merge": "HOLD",
+    "release_deploy": "HOLD",
+    "findings": [
+      "SGV-F001",
+      "SGV-F002",
+      "SGV-F003",
+      "SGV-F004"
+    ]
+  },
+  "diff_against_reviewed": {
+    "files": 19,
+    "additions": 648,
+    "deletions": 100
+  },
+  "source_files": 75,
+  "author_tests": {
+    "targeted_ts_sqlite": {
+      "passed": 42,
+      "failed": 0,
+      "downloaded_source": "PASS"
+    },
+    "node_suite": {
+      "passed": 110,
+      "failed": 0
+    },
+    "kotlin_jvm_filesystem": {
+      "passed": 23,
+      "android_os_is_shim": true,
+      "privilege": "unprivileged",
+      "physical_android_runtime": "NOT_RUN"
+    },
+    "swift_foundation": {
+      "regression_cases": 16,
+      "original_cases": 6,
+      "linux_unprivileged": "PASS",
+      "macos_ci": "PASS"
+    }
+  },
+  "author_ci": {
+    "run_id": 35439466823,
+    "jobs": {
+      "checks": 105887666099,
+      "android": 105887759446,
+      "ios-simulator": 105887759379
+    },
+    "conclusion": "SUCCESS",
+    "job_conclusions": {
+      "checks": "SUCCESS",
+      "android": "SUCCESS",
+      "ios-simulator": "SUCCESS"
+    }
+  },
+  "intermediate_ci": {
+    "head": "9847200c2448e98ebe0f9812cee813285dbbe865",
+    "tree": "a7d76e5b74713239bb8e11e6ea1a9fe613d1e92b",
+    "run_id": 35438877502,
+    "checks": "SUCCESS",
+    "ios-simulator": "SUCCESS",
+    "android": "FAIL",
+    "reason": "LocalManagedFiles.kt:91 unresolved Os.unlink public SDK symbol",
+    "correction": "Public API21+ Os.remove with regular-file check and pre/post lstat; Os shim aligned; existing minSdk unchanged"
+  },
+  "source": {
+    "artifact_id": 10582954297,
+    "file": "SNS_GATEWAY_IVA002_FINAL_SOURCE_20260919.zip",
+    "outer_sha256": "1dae80fa852c79fa0cf502accd82477467109688a204ffdcb9d9905d9a59dce2",
+    "inner_sha256": "556c4a9f180747a0d457191f9cd5f6ae113c06005aa8cc1a0c6efd6dda408606",
+    "zip_crc": "PASS",
+    "path_safety": "PASS",
+    "tree_recomputed": true,
+    "local_byte_equality": true
+  },
+  "build_artifacts": [
+    {
+      "artifact_id": 10583875170,
+      "name": "android-unsigned-release-candidate",
+      "outer_sha256": "3f6c407eadf79180cabf586154721d0a5f7bc5cc0738796eaf9a80ffec471e94",
+      "size": 34271565,
+      "checksum_evidence": "GitHub artifact metadata; binary not downloaded in this correction task",
+      "scope": "UNSIGNED_APK_NOT_DEVICE_INSTALLATION"
+    },
+    {
+      "artifact_id": 10583715215,
+      "name": "ios-simulator-candidate",
+      "outer_sha256": "ff0b938cca19cc310b38c3132a612583c5b3c81916e7e9d85e9ebd7827838973",
+      "size": 15640605,
+      "checksum_evidence": "GitHub artifact metadata; binary not downloaded in this correction task",
+      "scope": "SIMULATOR_APP_NOT_IPHONE_IPA"
+    }
+  ],
+  "scope": {
+    "author_correction": "COMPLETED",
+    "independent_rereview": "NOT_RUN",
+    "device_sns_acceptance": "NOT_RUN / INDETERMINATE",
+    "pmo": "NOT_DISPATCHED",
+    "product_merge": "NOT_DONE / HOLD",
+    "release_deploy": "NOT_DONE / HOLD",
+    "device_signing_installation": "NOT_DONE",
+    "original_iva_report_modified": false,
+    "bootstrap_web_starter_changed": false,
+    "api_keys": "NOT_USED"
+  }
+}

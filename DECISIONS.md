@@ -1,8 +1,8 @@
 # MITCHELL 결정 기록
 
-Version 1.5 / Generation 6 / 2026-09-19 / Writer: MITCHELL
-Expected previous generation: 5
-Expected base: 5b11e3e39191df8a65fd8008665b93370a9ad75b
+Version 1.6 / Generation 7 / 2026-09-19 / Writer: MITCHELL
+Expected previous generation: 6
+Expected base: edd19651259193be0320197bda26cc8d448153ce
 
 사용자 지정, 상위 방향, 계획 채택, 작성자 처분, 검증 결과와 운영 반환 규칙을 구분한다. 원문을 복제하지 않는 정제 요약이며 과거 후보와 후속 교정의 대체 관계를 보존한다.
 
@@ -30,17 +30,19 @@ Expected base: 5b11e3e39191df8a65fd8008665b93370a9ad75b
 | D020 | DESIGN_PROPOSAL_ADOPTED_BY_D021 | 최초 제안은 iPhone/Galaxy 공통 로컬 앱, RN/Expo/TS·SQLite·native bridge, 앱 게시함과 지정 소스, 등록일 기준 날짜창, 기본 최대10장, 공유 시도와 사용자 완료 분리였다. 이후 작업계획 실행 지시로 구현 기본값에 사용하며 실제 기기/SNS 호환성 PASS는 아님 |
 | D021 | OWNER_EXECUTION_CONTINUATION | 사용자가 만든 sns-gateway에서 작업계획 초안에 따라 현재 MITCHELL 채널 직접 구현을 지시했고, 남은 폴더/앨범·날짜 묶음·지난 알림·보존 관리를 충분히 생각해 구현하라고 후속 지시했다. 작은 구현 선택을 다시 묻지 않으며 PMO로 이관하지 않음 |
 | D022 | AUTHOR_LIFECYCLE_DISPOSITION | SNSG-LIFECYCLE-001에서 네 남은 코드 영역을 구현한다. 소스 baseline/완전 스캔/unknown 날짜, immutable revision, 알림 날짜 확인, 미확인 공유 보호와7일 유예·삭제 journal·500MiB 관리 사본 제한을 적용한다. 상세 한계·시험·exact 대상은 완료보고가 소유하며 독립검증/실기 PASS로 승격하지 않음 |
+| D023 | IVA_RESULT_INGESTED | SNS Gateway cf6967ce…의 최초 IVA-002 v1.0.1을 exact5133d5fe…/blob575fbf73…로 수신. candidate FAIL, F001–F004 MEDIUM/P2, MERGE/RELEASE HOLD. SGV-01/03/08 PASS는 소스·fixture 범위, SGV-04 INDETERMINATE. 최초 판정을 보존 |
+| D024 | AUTHOR_AFFECTED_CORRECTION | D021의 기존 실행 범위에서 F001 영속 순환 재시도, F002 미확인/전체 이력 cursor, F003 엄격한 앱 소유 임시 사본, F004 I/O 오류 fail-closed와 삭제/reset journal만 교정. 임시 import 파일1시간 유예는 공유 staging7일 유예와 구분. 작성자 검사 후 새 후보 고정·별도 IVA affected-only 재검증. 권한 확대·독립 PASS 선언 아님 |
 
 ## 권한의 변경·보존
 
 초기 문서-only 범위는 D012와 실행 영수증이 B/W 구현·작성자 점검·제품 브랜치·커밋·PR 작성 범위에서 대체했다. 모바일 설계-only 상태는 D021과 docs/execution/SNS_GATEWAY_EXECUTION_20260919.md의 실행 승인으로 sns-gateway 코드·자체 점검·Git 후보 보존 범위에서 대체됐다. 기기 설치·실사진 공개·계정 생성·결제·개인 서명키·공개범위 변경·파괴적 변경·새 Persona·병합·배포는 여전히 별도 경계다.
 
-D017의 merge PASS는 B/W 독립 권고이며 실제 병합이나 release/deploy 승인이 아니다. D018은 IVA의 제품 수정·병합·배포 권한을 확대하지 않는다. D019/D021은 모바일 무인 게시 권한을 부여하지 않는다. API 키 등록 질문은 외부 서버나 SNS HTTP API를 새로 추가하라는 승인으로 해석하지 않았다.
+D017의 merge PASS는 B/W 독립 권고이며 실제 병합이나 release/deploy 승인이 아니다. D018은 IVA의 제품 수정·병합·배포 권한을 확대하지 않는다. D019/D021은 모바일 무인 게시 권한을 부여하지 않는다. API 키 등록 질문은 외부 서버나 SNS HTTP API를 새로 추가하라는 승인으로 해석하지 않았다. D023 결과 자체도 새 실행권한이 아니며 D024는 기존 승인 범위의 국소 교정이다.
 
 ## 검증 결과의 해석
 
-최초 B/W IVA FAIL은 당시 후보의 유효 판정이고 affected-only PASS는 해당 교정 후보의 후속 판정이다. SNS Gateway 작성자 코드·빌드 결과는 별도이며 SNS Gateway IVA와 실제 기기/SNS 수락은 NOT_RUN이다. 완료한 코드 묶음과 전체 제품 수락을 같은 이름으로 표시하지 않는다.
+최초 B/W IVA FAIL과 그 교정 후보의 affected-only PASS는 해당 범위에 보존한다. SNS Gateway 최초 IVA-002는 FAIL이며 작성자 교정으로 소급 PASS가 되지 않는다. 새 교정 후보의 별도 IVA 재검증과 실제 기기/SNS 수락은 NOT_RUN이다. 완료한 코드 묶음과 전체 제품 수락을 같은 이름으로 표시하지 않는다.
 
 ## 변경 이력
 
-Generation 1: 계획/정책 문서화. Generation 2: 후속 실행 승인과 최초 후보·복구. Generation 3: 최초 IVA 결과·4건 교정. Generation 4: affected-only IVA PASS·최종 반환 패킷 의무. Generation 5: 외부 저장소 없는 모바일 수동 공유 요구와 설계 후보. Generation 6: SNS Gateway 실행/재개와 네 남은 영역의 작성자 구현 처분. 과거 계획·보고서 원문은 변경하지 않는다.
+Generation 1: 계획/정책 문서화. Generation 2: 후속 실행 승인과 최초 후보·복구. Generation 3: 최초 B/W IVA 결과·4건 교정. Generation 4: B/W affected-only IVA PASS·최종 반환 패킷 의무. Generation 5: 외부 저장소 없는 모바일 수동 공유 요구와 설계 후보. Generation 6: SNS Gateway 실행/재개와 네 남은 영역의 작성자 구현 처분. Generation 7: SNS Gateway IVA-002 FAIL 수신과 F001–F004 교정 처분. 과거 계획·검증 보고서 원문은 변경하지 않는다.
