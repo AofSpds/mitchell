@@ -2,6 +2,24 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E017 — Windows Bootstrap 병합 복구·macOS v0.2 작성자 후보 고정 / 2026-09-20
+
+Actor: MITCHELL. PMO NOT_DISPATCHED. macOS IVA NOT_RUN.
+Recovery base: mitchell@d4abb0380a2bbef36db7e7ee225e5dda204c479e / bootstrap@78a919e9300bbb8de8fbc8843d7a8dc6b59044a1.
+
+- 사용자가 Windows 검증 후보 병합 후 macOS 지원 설계·구현을 승인하고 중단 후 계속하도록 지시했다. GitHub connector로 최신 refs/PR·운영 정책·제품 계획을 복구했다.
+- Windows PR#1은 중단 전2026-09-19에 이미 MERGED/CLOSED였으며 merge7ede3b394032b3f1da60235cb0ef2dad410df565의 tree2a28a91f8fdbbbc80bd37209206cdab9cf5e715a가 검증 후보와 같음을 확인했다. 병합을 재실행하지 않았다.
+- Mac 초기78a919e…/tree92153d14…/Draft PR#2 및 성공CI35449122339·35449122295를 복구했다. .command/Bash3.2 Core/Mobile/Optional·AI 선택, 동의·lock·기존 도구 보존·receipt/사후탐지·실패 처리는 이미 구현돼 있었다.
+- Homebrew 공식 Git 원문(last_review_date2026-09-17, blob d7b95f04a6cd1cbe473a0ab2462e587f68348530)을 확인해 과거14+ 설치선을15+로 교정했다.14는 Plan/Verify 진단 전용, Intel은Tier3·명시적 opt-in이며OS검사를 우회하지 않는다. 초기안과 당시14CI는 역사로 보존한다.
+- 후속 제품head753bc82f63f85722cd76ba78b186bcaf46253677, tree0b5ff0331af7db7f83d23c308370a148acd4ad74를 fast-forward 저장했다. 신설지원정책8개와 기존58개Linux Bash 경계시험이 통과했다. 실제 패키지를 설치한 시험은 아니다.
+- 최종macOS CI35452044776의macos-15 arm64/Intel 두job, Windows CI35452044793의PowerShell5.1/7 두job이 모두 성공했다. Mac suite의Linux전용1개skip을 실행PASS로 합산하지 않는다. nativeVerify는읽기전용이며실제Mac설치수락과 구분한다.
+- Artifact10587226850 outer2b9c6815…/innerd5b8379b…의33파일·CRC/경로·테스트작업본byte equality를 확인했다. Git attributes가변환한Windows텍스트9개만expectedblob과대조해LF계산하고.bat원바이트를유지하여exacttree를재구성했다. Windows기존18개blob은동일하다.
+- CURRENT generation13, DECISIONS D027/D028, 지속기억과완료보고·Manifest·최초MacIVA패킷을정제기록한다. 원검증보고서및이전작업일지의당시상태는수정하지않는다.
+- CLT/Homebrew 최초준비와Xcode/SDK·license·계정/서명은사용자수동이다. 실제PC/Mac설치·실계정/키/결제·보안해제·macOS PR#2병합·릴리스/배포는하지않았다. web-starter/sns-gateway변경없음.
+
+Results: docs/execution/BOOTSTRAP_MACOS_COMPLETION_20260920.md, BOOTSTRAP_MACOS_MANIFEST_20260920.json, BOOTSTRAP_MACOS_IVA_PACKET_v0.1.md.
+Next: 고정한macOS신설경로의별도IVA. Windows기존PASS를Mac으로확대하지않고, 실제Mac수락·별도병합·릴리스는HOLD로유지한다.
+
 ## E016 — SNS Gateway PR #1 Owner 승인 병합 / 2026-09-19
 
 Actor: MITCHELL. PMO NOT_DISPATCHED.

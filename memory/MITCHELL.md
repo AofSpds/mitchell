@@ -2,12 +2,12 @@
 
 PROJECT_ID: MITCHELL
 PERSONA_ID: MITCHELL
-GENERATION: 9
-MEMORY_DELTA_ID: MITCHELL-MEM-009
-EXPECTED_GENERATION: 8
-EXPECTED_BASE_COMMIT: 61cf86d48c839f647c49ff52a90107778b8a5ad6
+GENERATION: 10
+MEMORY_DELTA_ID: MITCHELL-MEM-010
+EXPECTED_GENERATION: 9
+EXPECTED_BASE_COMMIT: d4abb0380a2bbef36db7e7ee225e5dda204c479e
 SEMANTIC_OWNER / WRITER: MITCHELL / MITCHELL
-SOURCE: 2026-09-19 SNS Gateway affected-only IVA PASS 후 Owner 승인 PR #1 병합
+SOURCE: 2026-09-20 Bootstrap Windows 승인 병합·Mac 확장 중단 복구와 작성자 후보 고정
 PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 
 ## 지속 목적
@@ -43,6 +43,16 @@ PROVENANCE: DERIVED_SUMMARY; raw transcript가 아님
 실패한 앞쪽 항목이 다음 정상 사진을 막지 않도록 native I/O 전에 영속 순환 차례를 기록한다. 실패 이력과 PENDING을 성공으로 위장하지 않는다. 이력 목록에는 전체 미확인 및 안정적인 이전 페이지 조회가 있어야 하며, LIMIT을 늘리거나 삭제 보호를 없애는 것으로 접근 문제를 덮지 않는다.
 
 Android 쓰기 중단의 엄격한 UUID.tmp도 관리 사진 사본이다. inventory·용량·초기화에 포함하고 active writer와 최근 사본은 보호한다. 파일 열거 실패와 접근 거부를 빈 목록/이미 삭제됨으로 취급하지 않는다. 확정된 ENOENT만 부재이며 불확실한 삭제·초기화는 journal을 유지한다. 최종 완전한 inventory가 비어야 초기화를 완료한다. UI의 완료 표시·DB 정리와 실제 파일 효과를 분리해 검사한다.
+
+## Bootstrap macOS 확장
+
+사용자는 Windows Bootstrap 기준선 병합 후 Mac 지원 설계·구현을 승인했다. 여기서 Apple 지원은 Mac 개발환경 설치기이며 iPhone에 Bootstrap을 설치한다는 뜻이 아니다. Windows 검증 후보는 PR#1로 main에 병합됐고, Mac은 별도 작업 브랜치/PR#2에서 검증한다. 기존 Windows 파일을 재배치하지 않고18개 blob을 그대로 보존한다.
+
+Mac 기본 설치선은 현재 Homebrew 공식 원문을 기준으로 native Apple Silicon/macOS15+다. 초기14+ 설치 제안은 대체됐고14는 Plan/Verify 진단만 허용한다. Intel은 Tier3·명시적 opt-in의 미수락 경로다. 지원 정책의 웹 cache가 충돌하면 공식 저장소 원문과 확인일을 남긴다. CI runner에서 스크립트가 성공했다고 모든 실제 Mac에 설치가 검증됐다고 표시하지 않는다.
+
+CLT와 Homebrew 최초 준비, Xcode/SDK·license·first-launch·서명·계정 로그인은 사용자 수동 단계다. Bootstrap의 Core/Mobile/Optional/AI 설치 선택과 실제 모바일 앱 빌드·배포는 다르다. 설치 의존성 변경 가능성을 안내하고 기존 도구·PATH·shell dotfiles·보안 설정을 강제로 바꾸지 않는다. Plan/Verify·동의·단일실행 lock·오류와 receipt 재확인을 유지한다.
+
+소스 archive가 Git attributes에 의해 Windows 텍스트 줄바꿈을 변환하면 원 blob과 대조한 해당 파일만 정규화하고 .bat 원바이트는 유지한다. archive bytes, Git blob/tree identity, 작성자 시험·실제 설치·독립 IVA를 구분한다. Mac exact 후보·CI·기록 경로는 CURRENT와 완료보고가 소유한다. Mac 최초 IVA는 아직 NOT_RUN이며 Windows/SNS의 과거 PASS를 전용하지 않는다.
 
 ## 역할·채널
 

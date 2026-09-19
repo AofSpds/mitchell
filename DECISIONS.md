@@ -1,8 +1,8 @@
 # MITCHELL 결정 기록
 
-Version 1.8 / Generation 9 / 2026-09-19 / Writer: MITCHELL
-Expected previous generation: 8
-Expected base: 61cf86d48c839f647c49ff52a90107778b8a5ad6
+Version 1.9 / Generation 10 / 2026-09-20 / Writer: MITCHELL
+Expected previous generation: 9
+Expected base: d4abb0380a2bbef36db7e7ee225e5dda204c479e
 
 사용자 지정, 상위 방향, 계획 채택, 작성자 처분, 검증 결과와 운영 반환 규칙을 구분한다. 원문을 복제하지 않는 정제 요약이며 과거 후보와 후속 교정의 대체 관계를 보존한다.
 
@@ -34,6 +34,8 @@ Expected base: 61cf86d48c839f647c49ff52a90107778b8a5ad6
 | D024 | AUTHOR_AFFECTED_CORRECTION | D021의 기존 실행 범위에서 F001 영속 순환 재시도, F002 미확인/전체 이력 cursor, F003 엄격한 앱 소유 임시 사본, F004 I/O 오류 fail-closed와 삭제/reset journal만 교정. 임시 import 파일1시간 유예는 공유 staging7일 유예와 구분. 작성자 검사 후 새 후보 고정·별도 IVA affected-only 재검증. 권한 확대·독립 PASS 선언 아님 |
 | D025 | IVA_AFFECTED_REREVIEW_RESULT | exact 교정 후보 4ab10f48…/tree caa83524…의 SGV-F001–F004 모두 PASS, affected scope 신규 finding NONE, MERGE_RECOMMENDATION PASS. 최초 cf6967ce 후보 FAIL은 보존. SGV-04 INDETERMINATE 및 실제 기기/SNS NOT_RUN 유지, RELEASE_DEPLOY_RECOMMENDATION HOLD. 실제 merge는 별도 Owner 처분 |
 | D026 | OWNER_MERGE_DISPOSITION | 사용자가 후속 ‘진행하세요’로 SNS Gateway PR #1 병합 진행을 승인했다. 검증 exact head 4ab10f48…를 expected head로 고정하고 merge commit 방식으로 병합하여 product main=1c7cd117…이 됐다. PR #1은 MERGED/CLOSED. release/deploy와 실제 기기/SNS·서명 설치 권한은 포함하지 않음 |
+| D027 | OWNER_BOOTSTRAP_MACOS_EXECUTION | 사용자가 Windows Bootstrap 검증 후보 병합 후 macOS v0.2 설계·구현을 진행하도록 승인하고 중단 후 계속 지시했다. Windows PR#1 merge7ede3b…와 Mac 초기78a919e…/PR#2를 원격에서 복구했으며 성공 효과를 반복하지 않았다. macOS 코드·자체 검사·작업 브랜치/PR·운영 Git 기록 범위이며 실제 사용자 Mac 설치·macOS 병합·릴리스·계정 변경은 별도 |
+| D028 | AUTHOR_MACOS_SUPPORT_DISPOSITION | Homebrew 공식 Git 원문(last_review_date2026-09-17, blob d7b95f04…) 재확인으로 초기14+ 설치안을15+ native Apple Silicon 설치선으로 대체한다. macOS14는 Plan/Verify 진단 전용, Intel은 Tier3·macOS15+ 명시적 opt-in 미수락 경로다. CLT/Homebrew 최초 준비·Xcode/SDK/license/서명은 사용자 수동. Windows18개 blob 보존, Mac 신설 경로는 별도 IVA 대상 |
 
 ## 권한의 변경·보존
 
@@ -41,10 +43,14 @@ Expected base: 61cf86d48c839f647c49ff52a90107778b8a5ad6
 
 D017의 merge PASS는 B/W 독립 권고이며 실제 병합이나 release/deploy 승인이 아니다. D018은 IVA의 제품 수정·병합·배포 권한을 확대하지 않는다. D019/D021은 모바일 무인 게시 권한을 부여하지 않는다. API 키 등록 질문은 외부 서버나 SNS HTTP API를 새로 추가하라는 승인으로 해석하지 않았다. D023 결과 자체도 새 실행권한이 아니며 D024는 기존 승인 범위의 국소 교정이다. D025의 MERGE_RECOMMENDATION=PASS 자체는 실행권한이 아니었고, D026의 별도 Owner 처분으로 실제 merge가 수행됐다. D026은 release·deploy·실기 설치·SNS 공개 권한까지 확대하지 않는다.
 
+D027은 Windows PR#1의 별도 승인 병합과 macOS v0.2 구현에 적용한다. Windows의 과거 PASS를 Mac으로 확대하지 않으며 Mac PR#2의 독립검증·실기 수락·병합·릴리스 권한을 구분한다. D028은 지원 정책을 보수적으로 갱신한 작성자 구현 선택이며 OS 업그레이드나 사용자 보안 설정 변경을 승인한 것이 아니다.
+
 ## 검증 결과의 해석
 
 최초 B/W IVA FAIL과 그 교정 후보의 affected-only PASS는 해당 범위에 보존한다. SNS Gateway 최초 IVA-002의 cf6967ce 후보는 FAIL로 보존한다. 후속 exact 교정 후보의 F001–F004 affected-only 재검증은 PASS이며 신규 finding은 없다. 교정 후보는 D026으로 main에 병합됐지만 실제 기기/SNS 수락은 NOT_RUN/INDETERMINATE이고 SGV-04도 INDETERMINATE를 유지한다. 완료한 코드 묶음과 전체 제품 수락을 같은 이름으로 표시하지 않는다.
 
+Windows Bootstrap PR#1은 D027에 따라 병합됐고 실제 Windows 수락은 미실행으로 남는다. Mac v0.2의 작성자 시험·runner Verify는 실제 사용자 Mac 설치나 독립 IVA PASS가 아니다. 초기78a919e 후보의14 환경 CI와 후속753bc82 후보의15 환경 CI는 서로 다른 소스·정책의 증거로 보존한다.
+
 ## 변경 이력
 
-Generation 1: 계획/정책 문서화. Generation 2: 후속 실행 승인과 최초 후보·복구. Generation 3: 최초 B/W IVA 결과·4건 교정. Generation 4: B/W affected-only IVA PASS·최종 반환 패킷 의무. Generation 5: 외부 저장소 없는 모바일 수동 공유 요구와 설계 후보. Generation 6: SNS Gateway 실행/재개와 네 남은 영역의 작성자 구현 처분. Generation 7: SNS Gateway IVA-002 FAIL 수신과 F001–F004 교정 처분. Generation 8: 교정 후보의 affected-only IVA PASS·merge recommendation PASS 수신, release/deploy HOLD와 실기 미실행 보존. Generation 9: Owner merge 승인에 따라 검증 후보를 sns-gateway main에 병합, release/deploy 및 실기 gate는 미실행으로 보존. 과거 계획·검증 보고서 원문은 변경하지 않는다.
+Generation 1: 계획/정책 문서화. Generation 2: 후속 실행 승인과 최초 후보·복구. Generation 3: 최초 B/W IVA 결과·4건 교정. Generation 4: B/W affected-only IVA PASS·최종 반환 패킷 의무. Generation 5: 외부 저장소 없는 모바일 수동 공유 요구와 설계 후보. Generation 6: SNS Gateway 실행/재개와 네 남은 영역의 작성자 구현 처분. Generation 7: SNS Gateway IVA-002 FAIL 수신과 F001–F004 교정 처분. Generation 8: 교정 후보의 affected-only IVA PASS·merge recommendation PASS 수신, release/deploy HOLD와 실기 미실행 보존. Generation 9: Owner merge 승인에 따라 검증 후보를 sns-gateway main에 병합, release/deploy 및 실기 gate는 미실행으로 보존. Generation 10: Windows Bootstrap 승인 병합 복구와 Mac 확장·지원 정책 교정·작성자 후보 고정. 과거 계획·검증 보고서 원문은 변경하지 않는다.

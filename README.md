@@ -4,22 +4,28 @@
 
 ## 현재
 
-SNS Gateway의 최초 cf6967ce 후보 IVA-002 FAIL은 역사적으로 보존됩니다. 후속 교정 후보 4ab10f48…의 F001–F004 affected-only 재검증은 모두 PASS였고, 사용자의 별도 승인으로 PR #1을 main에 병합했습니다. 현재 sns-gateway main은 `1c7cd117d18929cdf40abc0e4f73fec4c87b2c65`입니다. release/deploy와 실제 기기/SNS 수락은 아직 아닙니다.
+Windows Bootstrap v0.1은 PR #1을 통해 main에 병합됐습니다. macOS Bootstrap v0.2는 별도 PR #2의 작성자 구현·검사 완료 후보이며 독립 IVA와 실제 Mac 설치 수락은 아직입니다. 현재 exact 대상과 미실행은 CURRENT.md가 소유합니다.
 
 | 계층 | 위치 | 상태 |
 |---|---|---|
 | 운영·계획 | AofSpds/mitchell | CURRENT/정책/결정/기억/작업일지/검증 기록 |
-| Windows 설치기 | AofSpds/bootstrap | 기존 구현 후보·Draft PR, 이번 작업 변경 없음 |
+| 개발환경 설치기 | AofSpds/bootstrap | Windows PR#1 병합; macOS PR#2 Draft·미병합·작성자 검사 성공 |
 | 웹 템플릿 | AofSpds/web-starter | 기존 구현 후보·Draft PR, 이번 작업 변경 없음 |
 | 모바일 사진 공유 | AofSpds/sns-gateway | PR #1 병합 완료, main=1c7cd117…; 실기/release 미완료 |
+
+Mac 구현은 .command/Bash3.2, Homebrew 기반 Core/Mobile/Optional·AI 선택입니다. 설치 기준은 Apple Silicon macOS15+이며14는 진단 전용, Intel은 명시적 opt-in 미수락 경로입니다. CLT/Homebrew 최초 설치와 Xcode·SDK·라이선스·서명·로그인은 사용자가 직접 합니다. Windows 기존18파일은 동일하게 보존했습니다.
 
 모바일은 외부 서버·외부 사진 저장소·SNS HTTP API/OAuth·API 키 없이 동작하는 공유 도우미입니다. 사진·문구·이력은 기기에 두고, 로컬 알림 후 사용자가 공식 SNS 앱에서 최종 게시합니다. 폴더·앨범 확인은 앱 재개/새로고침 기준이며 잠긴 휴대폰에서 무인 게시하는 앱이 아닙니다.
 
 ## 복구와 다음 작업
 
-README → CURRENT → AGENTS → 관련 DECISIONS/계획/완료보고 순서로 읽습니다. 필요한 범위만 memory/MITCHELL.md와 WORKLOG를 확장합니다. 현재 제품의 exact head/tree/CI는 CURRENT.md가 소유합니다. 제품 main의 초기 문서와 작업 브랜치를 혼동하지 않습니다.
+README → CURRENT → AGENTS → 관련 DECISIONS/계획/완료보고 순서로 읽습니다. 필요한 범위만 memory/MITCHELL.md와 WORKLOG를 확장합니다. 현재 제품의 exact head/tree/CI는 CURRENT.md가 소유합니다. 제품 main과 새 작업 브랜치를 혼동하지 않습니다.
 
 - 현재 상태: CURRENT.md
+- Mac 완료보고: docs/execution/BOOTSTRAP_MACOS_COMPLETION_20260920.md
+- Mac Manifest: docs/execution/BOOTSTRAP_MACOS_MANIFEST_20260920.json
+- Mac 별도 IVA 입력: docs/execution/BOOTSTRAP_MACOS_IVA_PACKET_v0.1.md
+- 기존 B/W IVA 결과: docs/execution/IVA_AFFECTED_ONLY_REREVIEW_RESULT_20260915.md
 - 최초 SNS Gateway IVA 결과: docs/execution/SNS_GATEWAY_IVA_RESULT_002_20260919.md
 - F001–F004 교정 보고: docs/execution/SNS_GATEWAY_IVA002_CORRECTION_COMPLETION_20260919.md
 - 교정 후보 Manifest: docs/execution/SNS_GATEWAY_IVA002_CORRECTED_MANIFEST_20260919.json
@@ -34,9 +40,9 @@ README → CURRENT → AGENTS → 관련 DECISIONS/계획/완료보고 순서로
 
 ## 역할과 경계
 
-MITCHELL은 현재 대화의 설계·구현·기억·승인된 Git 작업자입니다. PMO는 Codex WORK 작업자이며 실제 dispatch하지 않았습니다. IVA는 별도 독립검증자입니다. SNS Gateway 최초 검증과 교정 후보의 affected-only 재검증은 완료됐고, F001–F004는 모두 PASS입니다. Owner 승인으로 PR #1도 병합됐습니다. 다른 Persona·페어 검증자는 미설치입니다.
+MITCHELL은 현재 대화의 설계·구현·기억·승인된 Git 작업자입니다. PMO는 Codex WORK 작업자이며 실제 dispatch하지 않았습니다. IVA는 별도 독립검증자입니다. SNS Gateway 최초 검증과 교정 후보의 affected-only 재검증은 완료됐고, F001–F004는 모두 PASS입니다. Owner 승인으로 PR #1도 병합됐습니다. Mac Bootstrap 독립검증은 NOT_RUN입니다. 다른 Persona·페어 검증자는 미설치입니다.
 
-B/W 최초 지적4건의 affected-only IVA PASS는 해당 후보의 결과일 뿐 SNS Gateway의 검증으로 재사용하지 않습니다. IVA 최종 결과는 상세 보고서를 Git에 기록하고 MITCHELL에 복사 가능한 패킷으로 반환합니다.
+B/W 최초 지적4건의 affected-only IVA PASS는 해당 후보의 결과일 뿐 새 macOS 코드나 SNS Gateway의 검증으로 재사용하지 않습니다. IVA 최종 결과는 상세 보고서를 Git에 기록하고 MITCHELL에 복사 가능한 패킷으로 반환합니다.
 
 공개 Git에는 정제된 문서·코드·합성 fixture만 둡니다. 대화 원문·개인사진·실제키·서명키·원본 로그·비공개 원문을 저장하지 않습니다. 문서/코드 작성, Git 보존, 검사, native 빌드, 실기 사용, 독립검증, 병합, 배포는 서로 다른 완료입니다.
 

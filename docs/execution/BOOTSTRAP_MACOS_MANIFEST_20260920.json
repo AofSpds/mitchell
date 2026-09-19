@@ -1,0 +1,42 @@
+{
+  "manifest_id": "BOOTSTRAP-MAC-MANIFEST-001",
+  "version": "1.0",
+  "date": "2026-09-20",
+  "writer": "MITCHELL",
+  "repository": "AofSpds/bootstrap",
+  "branch": "work/bootstrap-macos-v0.2",
+  "pr": 2,
+  "head": "753bc82f63f85722cd76ba78b186bcaf46253677",
+  "tree": "0b5ff0331af7db7f83d23c308370a148acd4ad74",
+  "recovered_head": "78a919e9300bbb8de8fbc8843d7a8dc6b59044a1",
+  "recovered_tree": "92153d14f9821b0e891bd09fa00b22a1c1fbc070",
+  "base_main": "7ede3b394032b3f1da60235cb0ef2dad410df565",
+  "windows_base_tree": "2a28a91f8fdbbbc80bd37209206cdab9cf5e715a",
+  "windows_pr1": "MERGED / CLOSED; recovered, not merged again",
+  "windows_preserved_blobs": 18,
+  "source_files": 33,
+  "author_evidence": {
+    "linux_bash_fixtures": {"passed": 58, "failed": 0},
+    "linux_support_policy_tests": {"passed": 8, "failed": 0},
+    "macos_ci": {"run_id": 35452044776, "arm64_job": 105920780633, "intel_job": 105920780732, "status": "SUCCESS", "scope": "Bash fixtures and native read-only Verify; no package installation", "skip_note": "Linux-only negative test skips on Darwin; do not count as executed PASS"},
+    "windows_ci": {"run_id": 35452044793, "powershell51_job": 105920780622, "powershell7_job": 105920780843, "status": "SUCCESS"},
+    "recovered_macos_ci": 35449122339,
+    "recovered_windows_ci": 35449122295
+  },
+  "artifact": {
+    "id": 10587226850,
+    "name": "bootstrap-macos-source",
+    "outer_bytes": 37567,
+    "outer_sha256": "2b9c6815ef19d0ca1a6369c58575799ded32150d9e20e26ea2381ed030db95ed",
+    "inner_file": "bootstrap-macos-candidate.tar.gz",
+    "inner_sha256": "d5b8379b25ad057afc5264080bde599f78dc5ada982f068e2bb7b91e153235d6",
+    "zip_crc": "PASS",
+    "archive_path_safety": "PASS",
+    "byte_equal_to_tested_worktree": true,
+    "tree_recomputed": "0b5ff0331af7db7f83d23c308370a148acd4ad74",
+    "eol_normalized_for_git_blob_count": 9,
+    "eol_note": "Git archive applies attributes: normalize only nine Windows text files after blob comparison; keep bootstrap.bat raw CRLF"
+  },
+  "support_policy": {"default_install": "Apple Silicon macOS15+", "macos14": "diagnostic Plan/Verify only; Install denied", "intel": "Homebrew Tier3; macOS15+ opt-in, device unverified", "official_document_blob": "d7b95f04a6cd1cbe473a0ab2462e587f68348530", "official_document": "Homebrew/brew:docs/Installation.md; last_review_date 2026-09-17"},
+  "gates": {"author_implementation": "COMPLETED", "macos_iva": "NOT_RUN", "real_mac_acceptance": "NOT_RUN / INDETERMINATE", "windows_real_acceptance": "NOT_RUN / INDETERMINATE", "macos_pr_merge": "NOT_DONE / HOLD", "release_deploy": "NOT_DONE / HOLD", "pmo": "NOT_DISPATCHED", "user_device_account_key_changes": "NOT_DONE", "web_starter_sns_gateway_changes": "NOT_DONE"}
+}
