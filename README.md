@@ -1,43 +1,40 @@
 # MITCHELL
 
-Windows 초보 개발환경과 GitHub 기반 AI 개발을 위한 운영·계획 저장소입니다. 현재 메인 페르소나는 MITCHELL입니다.
+초보 개발환경·GitHub 기반 AI 개발·사진 공유 앱을 위한 운영·계획 저장소입니다. 메인 페르소나는 MITCHELL입니다.
 
-## 현재 상태
+## 현재 진입점
 
-**Bootstrap과 Web Starter의 구현 후보가 작업 브랜치·Draft PR에 있으며 작성자 CI가 성공했습니다. 제품 main 병합·IVA 독립검증·실사용 배포는 아직 아닙니다.**
+**현재 설계는 외부 서버·외부 사진 저장소 없이 동작하는 모바일 사진 공유 도우미입니다.** 사진과 문구는 기기에서 준비하고, 오전 9시 로컬 알림을 받은 사용자가 공식 SNS 앱에서 최종 게시합니다. 상세 설계는 문서이며 모바일 구현·실기 검증·배포 완료가 아닙니다.
+
+- 현재 상태: `CURRENT.md`
+- 새 모바일 상세 설계: `docs/mobile/LOCAL_SHARING_DESIGN_v1.0_20260919.md`
+- 역할·권한·기억: `AGENTS.md`
+- 결정과 대체 관계: `DECISIONS.md`
+- 기존 전체 계획: `docs/IMPLEMENTATION_PLAN_v1.0.md`
+- 지속 맥락: `memory/MITCHELL.md`
+- 사건 기록: `WORKLOG.md`
 
 | 계층 | 위치 | 상태 |
 |---|---|---|
-| 운영·계획 | AofSpds/mitchell | 현재/정책/결정/기억/계획/완료보고 |
-| Windows 설치 도구 | AofSpds/bootstrap, PR #1 | work/bootstrap-v0.1 구현 후보 |
-| 웹 템플릿 | AofSpds/web-starter, PR #1 | work/web-starter-v0.1 구현 후보 |
-| 실제 사진 게시 앱 | 별도 저장소 | 아직 미구현 |
+| 운영·계획 | AofSpds/mitchell | 현재/정책/결정/기억/계획/결과 |
+| Windows 설치 도구 | AofSpds/bootstrap, PR #1 | 구현 후보, Draft·미병합 |
+| 웹 템플릿 | AofSpds/web-starter, PR #1 | 구현 후보, Draft·미병합 |
+| 모바일 사진 공유 앱 | 실제 앱 저장소는 별도 | 상세 설계, 구현 미시작 |
 
-제품 main에는 초기 README만 있습니다. 구현 검토에는 CURRENT에 고정한 PR head나 전달 후보 ZIP을 사용하세요. bootstrap은 Windows 설치기이며 HLOM의 운영규범 배포 Bootstrap과 다른 제품입니다.
+Bootstrap/Web Starter는 최초 IVA 지적 4건의 affected-only 재검증을 통과했습니다. 이는 실제 Windows/Supabase 수락·병합·배포 또는 새 모바일 앱의 검증 PASS가 아닙니다. 결과는 `docs/execution/IVA_AFFECTED_ONLY_REREVIEW_RESULT_20260915.md`에 보존되어 있습니다. 제품 main과 후보 PR을 혼동하지 않습니다.
 
-## 시작·복구 순서
+## 시작·복구
 
-1. `CURRENT.md` — 실제 완료, 고정 head/tree, 남은 작업과 다음 절차.
-2. `AGENTS.md` — 역할·권한·검증·기억 정책.
-3. `DECISIONS.md` 및 `docs/execution/EXECUTION_20260915.md` — 이후 승인으로 대체된 과거 경계 확인.
-4. `docs/IMPLEMENTATION_PLAN_v1.0.md` — 상위 구현 계획; 존재만으로 전체 구현 완료가 아님.
-5. `docs/execution/COMPLETION_20260915.md` — 구현 후보와 실제 CI의 완료보고.
-6. 필요한 경우 `memory/MITCHELL.md`와 `WORKLOG.md`의 최근 항목.
+README → CURRENT → AGENTS → 관련 DECISIONS/계획을 먼저 읽습니다. 필요할 때 Persona 기억과 최근 Worklog를 확장합니다. 최신 Git과 일치하면 전 역사를 재독하지 않습니다. 과거 문서-only 범위와 후속 Git 구현 승인 관계는 `docs/execution/EXECUTION_20260915.md`에 있으며, 현재 모바일 설계 요청을 실제 설치·공개 게시 권한으로 확대하지 않습니다.
 
-## 검증 전달
+## 역할·검증
 
-`docs/execution/IVA_REVIEW_PACKET_v0.1.md`에 별도 IVA가 읽을 정확한 대상과 검증 범위를 모았습니다. 패킷 작성은 dispatch나 PASS가 아닙니다. `CANDIDATE_MANIFEST_20260915.json`에는 후보 ZIP checksum과 파일 비교 결과가 있습니다.
+MITCHELL은 현재 채널의 설계·기억·승인된 Git 작업자입니다. PMO는 Codex WORK 작업자이며 아직 NOT_DISPATCHED입니다. IVA는 별도 독립검증자입니다. B/W의 과거 검증은 완료됐지만 본 모바일 설계의 별도 IVA 검증은 NOT_RUN입니다. 다른 Persona·페어 검증자는 미설치입니다.
 
-| 이름 | 역할 | 실제 실행 상태 |
-|---|---|---|
-| MITCHELL | 메인 대화·설계·기억·승인된 Git 실행 | 현재 채널 수행 |
-| PMO | Codex WORK 작업자 | NOT_DISPATCHED |
-| IVA | 독립 검증자 | NOT_RUN |
+IVA 최종 반환은 상세 결과를 Git에 보존하고 MITCHELL에 복사 가능한 인계 패킷으로 제공합니다. 원 규칙은 `docs/execution/IVA_RETURN_PACKET_RULE_20260915.md`입니다.
 
-다른 Persona·페어 검증자는 미설치이며 자동 추가하지 않습니다.
+## 공개정보와 설정
 
-## 설정과 공개정보
+공개 Git에는 정제된 프로젝트 문서와 코드만 둡니다. 대화 원문·개인 사진·실제 키·비밀번호·비공개 원문·원본 로그를 저장하지 않습니다. Git은 휴대폰 사진·운영 데이터의 클라우드 백업이 아닙니다.
 
-`docs/CHATGPT_PROJECT_INSTRUCTIONS.md`는 ChatGPT 프로젝트 지침 등록용입니다. Git 저장만으로 플랫폼 설정이 자동 적용된다고 주장하지 않습니다.
-
-공개 저장소에는 정책·계획·정제 요약만 둡니다. 대화 원문·개인 사진·실제 키·비밀번호·다른 비공개 프로젝트 원문·원본 로그는 올리지 않습니다. 코드 작성, Git 보존, 검사, 실제 설치, 독립검증, 병합, 배포를 각각 구분합니다.
+`docs/CHATGPT_PROJECT_INSTRUCTIONS.md`는 등록용 안내이며 Git 저장만으로 플랫폼 설정이 바뀌지 않습니다. 코드 작성·문서 보존·검사·실제 설치·독립검증·병합·배포는 각각 증거로 보고합니다.

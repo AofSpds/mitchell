@@ -2,6 +2,21 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E010 — 외부 서버·스토리지 없는 모바일 수동 공유 상세 설계 / 2026-09-19
+
+Actor: MITCHELL
+Recovery base: `a2ab0d75c5b72cdca7c39db1dea0c44422b7b1ec`
+
+- 사용자가 외부 서버·외부 스토리지를 배제하고 최종 게시는 직접 누르는 방식을 선택해 상세 설계를 요청했다.
+- 기존 운영 문서·기억·계획과 전달된 모바일 서버형 설계를 읽고, Apple/Android/Expo 공식 자료의 로컬 알림·공유·파일·백업 경계를 확인했다.
+- `docs/mobile/LOCAL_SHARING_DESIGN_v1.0_20260919.md` 작성: 입력·날짜 의미, 9시 알림, local DB, 사진 사본, OS 공유, 문구 fallback, 공유 시도/사용자 확인 상태, 9단계 WBS와 22개 시험 조건.
+- 잠금 상태 강제 화면 실행, 문자 그대로 한 번 터치, 공유 callback만으로 게시 성공, 특정 앨범 추가시각 자동 확정은 보장하지 않는다.
+- 기존 B/W의 PR exact head와 Draft·미병합 상태를 재조회했다. 제품 코드·PR·CI를 변경하거나 검증을 반복하지 않았다.
+- 문서의 소유권에 따라 CURRENT/DECISIONS/Persona 기억과 README 진입점을 현행화했다. 과거 계획·IVA 보고서는 수정하지 않았다.
+- 모바일 구현·실기/SNS 공유·새 저장소·계정/키·설치·공개 게시·배포·PMO/IVA runtime은 실행하지 않았다.
+
+Next: L00 실제 공유 호환성 spike. 기록 자체는 기기 시험 PASS가 아니다. 저장 완료는 이 문서를 포함하는 commit/readback으로 확인한다.
+
 ## E009 — IVA 최종 반환 패킷 규칙 반영 / 2026-09-15
 
 - 사용자가 `MITCHELL-IVA-RETURN-PACKET-RULE-ACK` 패킷을 전달했다.
