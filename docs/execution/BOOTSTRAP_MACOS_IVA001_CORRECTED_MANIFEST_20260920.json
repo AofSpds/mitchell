@@ -1,0 +1,74 @@
+{
+  "document_id": "MITCHELL-BOOTSTRAP-MAC-001-CORRECTED-MANIFEST",
+  "version": "1.0",
+  "date": "2026-09-20",
+  "writer": "MITCHELL",
+  "product": {
+    "repository": "AofSpds/bootstrap",
+    "branch": "work/bootstrap-macos-v0.2",
+    "pr": 2,
+    "state": "OPEN / DRAFT / UNMERGED",
+    "head": "30a06ea0807a2c9686f4dd15062e08fd56bdf891",
+    "tree": "4692aadb0637c4c3765c237431357ea4b34d1184",
+    "parent": "753bc82f63f85722cd76ba78b186bcaf46253677",
+    "base_main": "7ede3b394032b3f1da60235cb0ef2dad410df565",
+    "changed_files": 5,
+    "additions": 326,
+    "deletions": 18,
+    "source_files": 35,
+    "windows_protected_blobs": 18
+  },
+  "original_iva": {
+    "repository": "AofSpds/mitchell",
+    "commit": "b3a72ee5b4814f516b88308d6d65a4704a839a7c",
+    "path": "docs/execution/BOOTSTRAP_MACOS_IVA_RESULT_001_20260920.md",
+    "blob": "c0904f3302eb04ae4e4d7e9f6a66d49043b257ab",
+    "verdict": "FAIL / PRESERVED",
+    "findings": ["MAC-F001", "MAC-F002", "MAC-F003"]
+  },
+  "author_checks": {
+    "linux_targeted": {"pass": 35, "fail": 0},
+    "linux_existing": {"pass": 58, "fail": 0},
+    "linux_policy": {"pass": 8, "fail": 0},
+    "macos_arm64": {"targeted_pass": 35, "existing_pass": 57, "existing_skip": 1, "policy_pass": 8, "bash": "3.2.57", "os": "15.7.9", "native_verify_exit": 2},
+    "artifact_targeted_recheck": "35 PASS; same tests, not additional unique cases",
+    "before_after": "Three original finding conditions reproduced on original source; corrected targeted suite passes",
+    "scope": "Actual Bash and isolated non-root filesystem; synthetic OS/brew/code; no real package installation"
+  },
+  "ci": {
+    "macos_run": 35457443486,
+    "macos_arm64_job": 105935134431,
+    "macos_intel_job": 105935134371,
+    "windows_run": 35457443465,
+    "powershell_51_job": 105935134169,
+    "powershell_7_job": 105935134095,
+    "conclusion": "ALL_JOBS_SUCCESS",
+    "previous_candidate_ci_rerun": false
+  },
+  "artifact": {
+    "id": 10588004720,
+    "name": "bootstrap-macos-source",
+    "size_in_bytes": 43127,
+    "outer_sha256": "ccf81b4583df12fd203629a158a90b7a0ecbb7ba4e1c0ec403a5f1e077199e69",
+    "inner_tar_sha256": "2f74477887bc7327a33cb7c2f1f4d0d2434a6610f8548c56bb975ac16de34de8",
+    "downloaded_and_checked": true,
+    "crc_and_path_safety": "PASS",
+    "mode_and_file_count": "PASS / 35",
+    "tree_recomputed": "4692aadb0637c4c3765c237431357ea4b34d1184",
+    "windows_export_eol_normalized_files": 9,
+    "bootstrap_bat_raw_preserved": true,
+    "normalized_source_vs_local_bytes": "MATCH"
+  },
+  "status": {
+    "author_correction": "COMPLETED",
+    "independent_rereview": "NOT_RUN",
+    "real_mac_install": "NOT_RUN / INDETERMINATE",
+    "merge_recommendation": "HOLD",
+    "release_deploy_recommendation": "HOLD",
+    "product_main_changed": false,
+    "pr_ready_or_merged": false,
+    "pmo": "NOT_DISPATCHED",
+    "web_starter_sns_gateway_changed": false,
+    "user_device_account_key_change": false
+  }
+}

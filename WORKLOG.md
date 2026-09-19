@@ -2,6 +2,24 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E018 — Bootstrap macOS IVA-001 수신·MAC-F001–F003 교정 / 2026-09-20
+
+Actor: MITCHELL. PMO NOT_DISPATCHED. 새 후보 IVA affected-only NOT_RUN.
+Recovery base: mitchell@b3a72ee5b4814f516b88308d6d65a4704a839a7c / bootstrap@753bc82f63f85722cd76ba78b186bcaf46253677.
+
+- GitHub connector로 최초 Mac IVA 결과 원문과 blob c0904f3302eb04ae4e4d7e9f6a66d49043b257ab을 직접 읽었다. 원 후보 FAIL, F001/F002 P2·F003 P3, MERGE/RELEASE HOLD를 보존한다. 원 보고서는 변경하지 않는다.
+- 기존 Owner macOS 구현·계속 지시 D027 안에서 세 finding만 교정했다. 결과 패킷 자체를 새 실행권한으로 보지 않으며 Windows 또는 다른 제품을 재구현하지 않는다.
+- 확장 설치 시도 후 새 목록 조회 실패 시 후속 변경을 차단했다. 앱 탐지는 부모의 정상적인 탐색·직접 자식 열거로 부재를 확인하고 불확실한 경로에서는 설치를 차단한다. lock base mkdir의 raw stderr도 억제했다.
+- 원 세 결함의 통제된 재현 후 교정본 표적35개가 통과했다. 기존Linux58개·지원정책8개도 통과했다. 비특권 실제 파일시스템/Bash와 합성 OS·brew·code 경계이며 실제 패키지 설치가 아니다.
+- 제품 새 head30a06ea0807a2c9686f4dd15062e08fd56bdf891, tree4692aadb0637c4c3765c237431357ea4b34d1184를 원753bc82 parent로 fast-forward했다.5파일 +326/-18, 전체35파일이며 Windows 보호18개 blob은 동일하다.
+- 새 macOS CI35457443486의 arm64/Intel, Windows CI35457443465의 PowerShell5.1/7 모두 SUCCESS다. arm64 로그의 Bash3.2.57·표적35 PASS·기존57 PASS/1 SKIP·정책8 PASS와 read-only Verify exit2를 확인했다. skip과 실제 설치를 PASS로 확대하지 않는다.
+- Artifact10588004720의 outer ccf81b45…/inner2f744778… 및35파일·CRC·경로·mode를 확인했다. Windows export EOL9개만 계산용 정규화하고 .bat 원바이트를 유지해 exact tree와 로컬 검사본을 대조했다. 받은 최종 소스에서도 표적35개가 통과했다.
+- CURRENT generation14와 README 진입점·완료보고·Manifest·재검증 패킷을 현행화한다. DECISIONS D027/D028의 기존 실행/지원 경계는 변경하지 않는다. 과거 문서와 WORKLOG 사건의 당시 상태는 보존한다.
+- 실제 Mac/PC 설치·Finder/Gatekeeper·TCC/ACL·실계정·라이선스·서명·Mobile build·PR ready/merge·릴리스/배포는 하지 않았다. Windows main 및 web-starter/sns-gateway 변경 없음.
+
+Results: docs/execution/BOOTSTRAP_MACOS_IVA001_CORRECTION_COMPLETION_20260920.md, BOOTSTRAP_MACOS_IVA001_CORRECTED_MANIFEST_20260920.json, BOOTSTRAP_MACOS_IVA_AFFECTED_REREVIEW_PACKET_v0.2.md.
+Next: 새 exact 후보의 MAC-F001–F003 및 실질적 영향만 별도 IVA affected-only. 최초 FAIL과 실제 Mac 수락·병합·릴리스 HOLD 유지.
+
 ## E017 — Windows Bootstrap 병합 복구·macOS v0.2 작성자 후보 고정 / 2026-09-20
 
 Actor: MITCHELL. PMO NOT_DISPATCHED. macOS IVA NOT_RUN.

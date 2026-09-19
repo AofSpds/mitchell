@@ -4,12 +4,12 @@
 
 ## 현재
 
-Windows Bootstrap v0.1은 PR #1을 통해 main에 병합됐습니다. macOS Bootstrap v0.2는 별도 PR #2의 작성자 구현·검사 완료 후보이며 독립 IVA와 실제 Mac 설치 수락은 아직입니다. 현재 exact 대상과 미실행은 CURRENT.md가 소유합니다.
+Windows Bootstrap v0.1은 PR #1을 통해 main에 병합됐습니다. macOS Bootstrap v0.2 최초 IVA는 FAIL이며 MAC-F001–F003을 교정한 새 후보가 PR #2에 있습니다. 작성자 표적 검사와 CI는 성공했지만 새 후보의 독립 affected-only 재검증과 실제 Mac 설치 수락은 아직입니다. 최초 FAIL은 보존하며 현재 exact 대상과 미실행은 CURRENT.md가 소유합니다.
 
 | 계층 | 위치 | 상태 |
 |---|---|---|
 | 운영·계획 | AofSpds/mitchell | CURRENT/정책/결정/기억/작업일지/검증 기록 |
-| 개발환경 설치기 | AofSpds/bootstrap | Windows PR#1 병합; macOS PR#2 Draft·미병합·작성자 검사 성공 |
+| 개발환경 설치기 | AofSpds/bootstrap | Windows PR#1 병합; macOS PR#2 교정 후보·Draft·미병합 |
 | 웹 템플릿 | AofSpds/web-starter | 기존 구현 후보·Draft PR, 이번 작업 변경 없음 |
 | 모바일 사진 공유 | AofSpds/sns-gateway | PR #1 병합 완료, main=1c7cd117…; 실기/release 미완료 |
 
@@ -22,9 +22,13 @@ Mac 구현은 .command/Bash3.2, Homebrew 기반 Core/Mobile/Optional·AI 선택�
 README → CURRENT → AGENTS → 관련 DECISIONS/계획/완료보고 순서로 읽습니다. 필요한 범위만 memory/MITCHELL.md와 WORKLOG를 확장합니다. 현재 제품의 exact head/tree/CI는 CURRENT.md가 소유합니다. 제품 main과 새 작업 브랜치를 혼동하지 않습니다.
 
 - 현재 상태: CURRENT.md
-- Mac 완료보고: docs/execution/BOOTSTRAP_MACOS_COMPLETION_20260920.md
-- Mac Manifest: docs/execution/BOOTSTRAP_MACOS_MANIFEST_20260920.json
-- Mac 별도 IVA 입력: docs/execution/BOOTSTRAP_MACOS_IVA_PACKET_v0.1.md
+- Mac 최초 IVA 결과: docs/execution/BOOTSTRAP_MACOS_IVA_RESULT_001_20260920.md
+- Mac 교정 완료보고: docs/execution/BOOTSTRAP_MACOS_IVA001_CORRECTION_COMPLETION_20260920.md
+- Mac 교정 Manifest: docs/execution/BOOTSTRAP_MACOS_IVA001_CORRECTED_MANIFEST_20260920.json
+- Mac affected-only IVA 입력: docs/execution/BOOTSTRAP_MACOS_IVA_AFFECTED_REREVIEW_PACKET_v0.2.md
+- 이전 Mac 완료보고: docs/execution/BOOTSTRAP_MACOS_COMPLETION_20260920.md
+- 이전 Mac Manifest: docs/execution/BOOTSTRAP_MACOS_MANIFEST_20260920.json
+- 이전 Mac IVA 입력: docs/execution/BOOTSTRAP_MACOS_IVA_PACKET_v0.1.md
 - 기존 B/W IVA 결과: docs/execution/IVA_AFFECTED_ONLY_REREVIEW_RESULT_20260915.md
 - 최초 SNS Gateway IVA 결과: docs/execution/SNS_GATEWAY_IVA_RESULT_002_20260919.md
 - F001–F004 교정 보고: docs/execution/SNS_GATEWAY_IVA002_CORRECTION_COMPLETION_20260919.md
@@ -40,7 +44,7 @@ README → CURRENT → AGENTS → 관련 DECISIONS/계획/완료보고 순서로
 
 ## 역할과 경계
 
-MITCHELL은 현재 대화의 설계·구현·기억·승인된 Git 작업자입니다. PMO는 Codex WORK 작업자이며 실제 dispatch하지 않았습니다. IVA는 별도 독립검증자입니다. SNS Gateway 최초 검증과 교정 후보의 affected-only 재검증은 완료됐고, F001–F004는 모두 PASS입니다. Owner 승인으로 PR #1도 병합됐습니다. Mac Bootstrap 독립검증은 NOT_RUN입니다. 다른 Persona·페어 검증자는 미설치입니다.
+MITCHELL은 현재 대화의 설계·구현·기억·승인된 Git 작업자입니다. PMO는 Codex WORK 작업자이며 실제 dispatch하지 않았습니다. IVA는 별도 독립검증자입니다. SNS Gateway 최초 검증과 교정 후보의 affected-only 재검증은 완료됐고, F001–F004는 모두 PASS입니다. Owner 승인으로 PR #1도 병합됐습니다. Mac Bootstrap 최초 IVA는 FAIL이며 새 교정 후보의 affected-only 재검증은 NOT_RUN입니다. 다른 Persona·페어 검증자는 미설치입니다.
 
 B/W 최초 지적4건의 affected-only IVA PASS는 해당 후보의 결과일 뿐 새 macOS 코드나 SNS Gateway의 검증으로 재사용하지 않습니다. IVA 최종 결과는 상세 보고서를 Git에 기록하고 MITCHELL에 복사 가능한 패킷으로 반환합니다.
 
