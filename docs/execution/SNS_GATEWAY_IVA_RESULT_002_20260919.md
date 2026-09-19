@@ -1,7 +1,7 @@
 # SNS Gateway — IVA-002 구현 후보 독립검증 결과
 
 DOCUMENT_ID: MITCHELL-SNSG-IVA-002-RESULT  
-VERSION: 1.0  
+VERSION: 1.0.1  
 DATE: 2026-09-19  
 FROM: IVA / TO: MITCHELL  
 PROJECT: MITCHELL / PRODUCT: SNS Gateway  
@@ -237,19 +237,19 @@ F003/F004는 제품 native 파일을 변경하지 않고 컴파일한다. Kotlin
 | SWIFT_AMBIGUOUS_ABSENCE | deleteReportedSuccess=true, rejected=false, photoExistsAfterAccessRestore=true |
 | RESET_EMPTY_INVENTORY_COMPOSITION | remainingAssetRows=0, resetPending=false, fileDeleteCalls=0 |
 
-新しいテストではなく、上記観測の正規化された一覧である。
+이 표는 앞서 실행한 관측을 정리한 것이며 추가로 실행한 별도 시험 수를 뜻하지 않는다.
 
-## 9. 外部公式資料の補助確認
+## 9. 외부 공식 자료의 보조 확인
 
-製品要件は上記Git設計・実装契約が根拠であり、一般資料で置き換えていない。外部公式API資料はファイル失敗境界の補助確認にのみ使用した。
+제품 요구사항의 근거는 위 Git 설계·구현 계약이다. 일반 자료로 원천 요구를 대체하지 않았다. 외부 공식 API 자료는 파일 실패 경계의 보조 확인에만 사용했다.
 
-- Android `java.io.File.listFiles()`：空ディレクトリの空配列と、I/O失敗等のnullを区別する契約。`https://developer.android.com/reference/java/io/File#listFiles()`
-- Apple `FileManager.contentsOfDirectory(at:includingPropertiesForKeys:options:)`：Swiftでは失敗をthrowsで返す契約。`https://developer.apple.com/documentation/foundation/filemanager/contentsofdirectory(at:includingpropertiesforkeys:options:)`
+- Android `java.io.File.listFiles()`: 빈 디렉터리의 빈 배열과 I/O 실패 등의 null 반환을 구분하는 계약. `https://developer.android.com/reference/java/io/File#listFiles()`
+- Apple `FileManager.contentsOfDirectory(at:includingPropertiesForKeys:options:)`: Swift에서 실패를 throws로 반환하는 계약. `https://developer.apple.com/documentation/foundation/filemanager/contentsofdirectory(at:includingpropertiesforkeys:options:)`
 
 ## 10. 권한·외부효과와 Git 영수증
 
-수행한 것은 read-only Git/소스 검토, 격리 fixture 실행과 본 IVA 정제 결과 문서의 신규 기록이다. 제품 소스·제품 PR/branch/main·사용자 기기·계정·키·SNS·릴리스·배포는 변경하지 않았다. PMO dispatch, 새 Persona 생성, 전체 CI 재실행도 하지 않았다. 공개 Git에는 개인사진·토큰·서명키·대화 원문·raw CI/기기 로그를 기록하지 않는다.
+수행한 것은 read-only Git/소스 검토, 격리 fixture 실행과 본 IVA 정제 결과 문서의 기록이다. 제품 소스·제품 PR/branch/main·사용자 기기·계정·키·SNS·릴리스·배포는 변경하지 않았다. PMO dispatch, 새 Persona 생성, 전체 CI 재실행도 하지 않았다. 공개 Git에는 개인사진·토큰·서명키·대화 원문·raw CI/기기 로그를 기록하지 않는다.
 
-본 문서의 실제 Git 기록 완료는 생성 API 응답과 exact commit의 파일 readback으로 판단한다. 문서 내부에 자신의 미래 commit SHA를 예상해 넣지 않는다. 반환 패킷에 실제 결과 path/commit/blob과 최종 권고를 고정한다.
+본 문서의 실제 Git 기록 완료는 쓰기 API 응답과 exact commit의 파일 readback으로 판단한다. 문서 내부에 자신의 미래 commit SHA를 예상해 넣지 않는다. 반환 패킷에 실제 결과 path/commit/blob과 최종 권고를 고정한다. v1.0.1은 최초 기록의 보조 설명을 한국어로 정리한 편집 교정이며 대상·판정·재현 결과의 변경은 없다.
 
 MITCHELL 다음 조치: 이 보고서를 수신하고 F001–F004 교정 범위와 병합 HOLD를 반영한다. 사용자 행동: IVA 반환 패킷을 MITCHELL 작성자 채널에 전달한다.
