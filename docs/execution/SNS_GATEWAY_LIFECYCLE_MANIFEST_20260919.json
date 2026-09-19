@@ -1,0 +1,79 @@
+{
+  "manifest_id": "SNSG-LIFECYCLE-MANIFEST-001",
+  "version": "1.0",
+  "date": "2026-09-19",
+  "writer": "MITCHELL",
+  "repository": "AofSpds/sns-gateway",
+  "branch": "work/sns-gateway-v0.1",
+  "pr": 1,
+  "main_base": "13d83595e31867c24fb8154074a7ad76d5995f95",
+  "parent": "f5dfbe964789a757bdbdc6fa1c78bf7c861f64b3",
+  "head": "cf6967ce920793a72f88da746af4d0a317e61ed8",
+  "tree": "c13cb960d960f57979df4a18a7a3236225be52e6",
+  "source_files": 68,
+  "diff": {
+    "changed_files": 36,
+    "additions": 1263,
+    "deletions": 203
+  },
+  "author_ci": {
+    "run_id": 35433487023,
+    "status": "SUCCESS",
+    "jobs": {
+      "checks": 105872116241,
+      "android": 105872208793,
+      "ios-simulator": 105872208796
+    },
+    "node_tests": 94,
+    "swift_file_guard_cases": 6
+  },
+  "source": {
+    "artifact_id": 10581721459,
+    "file": "SNS_GATEWAY_LIFECYCLE_SOURCE_20260919.zip",
+    "outer_sha256": "b77adc0c88ca0ffda5ebe60926f6fb903f3df91273c349e309d1272a51d3626e",
+    "inner_sha256": "95d731750872ee45f35dfe3921bec493edc2ab2841b6d3389bd1c4ecac73d363",
+    "tree_recomputed": true,
+    "zip_crc": "PASS",
+    "path_safety": "PASS",
+    "artifact_source_tests": "94/94 PASS"
+  },
+  "binaries": [
+    {
+      "artifact_id": 10581822003,
+      "file": "SNS_GATEWAY_LIFECYCLE_ANDROID_UNSIGNED_20260919.zip",
+      "bytes": 34269324,
+      "outer_sha256": "a3d5706d0f2342297c1056de78ff3315d4b9ec954ef63b95046d4a20679152fa",
+      "members": [
+        {
+          "path": "app-release-unsigned.apk",
+          "bytes": 75575677,
+          "sha256": "bc9f505b69857ee6b1fbfdbe24b5c167013b455702c31ebf0708b8a1dd5a531f"
+        }
+      ]
+    },
+    {
+      "artifact_id": 10581741863,
+      "file": "SNS_GATEWAY_LIFECYCLE_IOS_SIMULATOR_20260919.zip",
+      "bytes": 15624314,
+      "outer_sha256": "23b79f2f25a26f5db90f473cb70cc87d866cf281b97b619be0a8b6c6a228dad2",
+      "members": [
+        {
+          "path": "ios-simulator-app.zip",
+          "bytes": 15791589,
+          "sha256": "e4e001fd73cb1912389afda124fd31e5de923a67028779d22c7d61a2796de256"
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "implementation": "FOUR_REMAINING_CODE_AREAS_IMPLEMENTED",
+    "independent_iva": "NOT_RUN",
+    "device_sns_acceptance": "NOT_RUN",
+    "pmo": "NOT_DISPATCHED",
+    "merge": "NOT_DONE",
+    "signing_device_release": "NOT_DONE",
+    "deployment": "NOT_DONE",
+    "android_artifact": "UNSIGNED_RELEASE_NOT_INSTALLATION_READY",
+    "ios_artifact": "SIMULATOR_APP_NOT_IPHONE_IPA"
+  }
+}

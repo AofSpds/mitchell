@@ -2,6 +2,24 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E013 — SNS Gateway 남은 네 코드 영역 구현·작성자 검사 / 2026-09-19
+
+Actor: MITCHELL
+Recovery base: mitchell@5b11e3e39191df8a65fd8008665b93370a9ad75b / sns-gateway@f5dfbe964789a757bdbdc6fa1c78bf7c861f64b3
+
+- 사용자가 남은 기능을 충분히 생각해 구현하도록 지시하고 중단 후 계속하도록 요청했다. 기존 Git/계획/AGENTS와 정확한 소스 artifact를 복구하고 첫 후보를 다시 만들지 않았다.
+- Galaxy SAF 폴더/iPhone PhotoKit 앨범의 지속 연결·baseline·완전 스캔·pending, 날짜별 immutable revision, 공유 snapshot, 오래된 알림 날짜 확인, 보존·삭제·용량·초기화 journal을 추가했다.
+- 외부 소스의 실제 추가시각을 추정하지 않고 FIRST_OBSERVED 날짜 확인으로 남겼다. iOS 반복 알림의 전달일과 원 예정일을 구분했다. 앱 재개/새로고침 연동이며 상시감시/무인게시를 주장하지 않는다.
+- 공유상태와 완료시각을 같은 트랜잭션으로 저장하고 삭제 전 경로 전체 검증·미확인 보호·실패 journal 재개를 확인했다. 기존 DB/등록일/문구/이력을 보존했다.
+- 제품 commit cf6967ce920793a72f88da746af4d0a317e61ed8, tree c13cb960d960f57979df4a18a7a3236225be52e6. 이전 대비36파일 변경, 전체68파일이다.
+- CI35433487023의 checks/android/ios-simulator 모두 SUCCESS. Node94개와 실제 Swift Foundation 삭제보호6개가 통과했다. 실기/SNS 결과가 아니다.
+- 새 source artifact10581721459의 외부/내부 SHA와68파일 Git tree를 재계산했고 최종 산출물 소스에서도94개 시험이 통과했다. Android unsigned/iOS simulator 산출물도 checksum/ZIP을 확인했다.
+- 상세 보고·Manifest·IVA v0.2 입력과 CURRENT/DECISIONS/기억을 현행화했다. 이전 보고서는 당시 상태로 보존한다.
+- API 키·서버·PMO·독립 IVA·기기 설치·개인사진·SNS 전송·공개 게시·제품main·배포는 실행하지 않았다. bootstrap/web-starter는 변경하지 않았다.
+
+Results: docs/execution/SNS_GATEWAY_LIFECYCLE_COMPLETION_20260919.md, SNS_GATEWAY_LIFECYCLE_MANIFEST_20260919.json, SNS_GATEWAY_IVA_PACKET_v0.2.md.
+Next: 고정 후보의 별도 IVA 검증, 이후 승인된 실기 수락/서명/병합·배포. 네 코드 영역을 다시 미구현으로 보고하지 않으며 실기·독립검증에서 발생할 교정은 별도다.
+
 ## E012 — SNS Gateway 재개와 로컬 게시함·알림 구현 / 2026-09-19
 
 Actor: MITCHELL
@@ -29,7 +47,7 @@ Recovery base: `a2ab0d75c5b72cdca7c39db1dea0c44422b7b1ec`
 
 - 사용자가 외부 서버·외부 스토리지를 배제하고 최종 게시는 직접 누르는 방식을 선택해 상세 설계를 요청했다.
 - 기존 운영 문서·기억·계획과 전달된 모바일 서버형 설계를 읽고, Apple/Android/Expo 공식 자료의 로컬 알림·공유·파일·백업 경계를 확인했다.
-- `docs/mobile/LOCAL_SHARING_DESIGN_v1.0_20260919.md` 작성: 입력·날짜 의미, 9시 알림, local DB, 사진 사본, OS 공유, 문구 fallback, 공유 시도/사용자 확인 상태, 9단계 WBS와 22개 시험 조건.
+- `docs/mobile/LOCAL_SHARING_DESIGN_v1.0_20260919.md` 작성: 입력·날짜 의미, 9시 알림, local DB, 사진 사본, OS 공유, 문구 fallback, 공유 시도/사용자 확인 상태, 9단계 WBS와22개 시험 조건.
 - 잠금 상태 강제 화면 실행, 문자 그대로 한 번 터치, 공유 callback만으로 게시 성공, 특정 앨범 추가시각 자동 확정은 보장하지 않는다.
 - 기존 B/W의 PR exact head와 Draft·미병합 상태를 재조회했다. 제품 코드·PR·CI를 변경하거나 검증을 반복하지 않았다.
 - 문서의 소유권에 따라 CURRENT/DECISIONS/Persona 기억과 README 진입점을 현행화했다. 과거 계획·IVA 보고서는 수정하지 않았다.
@@ -49,30 +67,30 @@ Next: L00 실제 공유 호환성 spike. 기록 자체는 기기 시험 PASS가 
 
 - IVA가 `docs/execution/IVA_AFFECTED_ONLY_REREVIEW_RESULT_20260915.md`를 Git에 기록했다.
 - exact corrected candidates의 `IVA-B001`, `IVA-B002`, `IVA-W001`, `IVA-W002`가 모두 PASS였고 새 finding은 없었다.
-- `MERGE_RECOMMENDATION = PASS`이나 실제 Windows·Supabase 통합은 `NOT_RUN / INDETERMINATE`, release/deploy는 `HOLD`다.
+- `MERGE_RECOMMENDATION = PASS`이나 실제 Windows·Supabase 통합은 `NOT_RUN / INDETERMINATE`, release/deploy는 HOLD다.
 - 결과 commit은 `8919c23eef0d8b845e5c8cd66e89f7be85209154`, 결과 blob은 `be514d035fde03370db0c6ad90bfa916c0ffbe79`다.
 - 제품 PR은 계속 Draft·미병합이며 제품 main, 사용자 PC, Cloud, SNS에는 변경이 없다.
 
 ## E007 — Exact head 안정화와 UTF-8 복구 / 2026-09-15
 
 - PR 설명 현행화 중 `NONEXISTENT` placeholder가 commit `fc52d761e7fcd97ffab29f42cce6f1e7c7fbfd41`에 생성됐고, 확인 즉시 `f880d0297e4d092c0f7d5025ff42cc7648fb66aa`에서 삭제했다.
-- 실질 교정 head `33b1b7e6…` 대비 현재 head의 파일 diff는 0이며 tree는 동일한 `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a`다. force-reset하지 않았다.
-- 최신 Bootstrap CI run `34972848451`의 PowerShell 5.1/7 두 job이 성공했다. artifact `10397977572`의 outer SHA-256은 `63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f`, inner ZIP SHA-256은 `7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b`다.
-- 이전 WORKLOG blob의 비 UTF-8 바이트를 확인해 UTF-8 문서로 재구성했다.
+- 실질 교정 head `33b1b7e6…` 대비 현재 head의 파일 diff는0이며 tree는 동일한 `2a28a91f8fdbbbc80bd37209206cdab9cf5e715a`다. force-reset하지 않았다.
+- 최신 Bootstrap CI run34972848451의 PowerShell5.1/7 두 job이 성공했다. artifact10397977572의 outer SHA-256은63218f527893dc5a311151f9fe354dd2839b5ca9525a19798dd4b1e4bcadf74f, inner ZIP SHA-256은7f9dcce619f0e403cb2b23dec7783a3f9c5a96a1b8cf9535a6e97d91f928735b다.
+- 이전 WORKLOG blob의 비UTF-8 바이트를 확인해 UTF-8 문서로 재구성했다.
 - 제품 main, 사용자 PC, Cloud, SNS에는 변경 없음. PR은 Draft·미병합으로 유지한다.
 
 ## E006 — 최초 IVA 결과와 affected-only 교정 / 2026-09-15
 
-- IVA 결과 commit: `d16166f8b390fb63f6332b77960171e803f5bd59`.
+- IVA 결과 commit: d16166f8b390fb63f6332b77960171e803f5bd59.
 - 판정: Bootstrap FAIL, Web Starter FAIL, 실환경 INDETERMINATE, merge HOLD.
-- Finding: `IVA-B001`, `IVA-B002`, `IVA-W001`, `IVA-W002`.
-- Bootstrap 교정 tree `2a28a91f…`, Web Starter 교정 head/tree `a2c63cca…` / `34716ab2…`에서 작성자 CI 성공.
+- Finding: IVA-B001, IVA-B002, IVA-W001, IVA-W002.
+- Bootstrap 교정 tree2a28a91f…와 Web Starter 교정 head/tree a2c63cca…/34716ab2…에서 작성자 CI 성공.
 - 교정 완료보고, corrected manifest, affected-only IVA 재검증 패킷 작성. PMO dispatch·제품 병합·배포·실환경 변경 없음.
 
 ## E005 — 중단 복구와 후보 완료 정리 / 2026-09-15
 
-- 제품 브랜치, Draft PR 2개와 성공 CI를 remote 증거로 복구했다.
-- 최초 후보: Bootstrap `b4cabc7…`, Web Starter `15efb21…`.
+- 제품 브랜치, Draft PR2개와 성공 CI를 remote 증거로 복구했다.
+- 최초 후보: Bootstrap b4cabc7…, Web Starter15efb21….
 - 완료보고, 후보 manifest, 최초 IVA 입력 패킷을 작성했다.
 
 ## E004 — 최초 구현 후보와 작성자 CI / 2026-09-15
@@ -92,5 +110,5 @@ Next: L00 실제 공유 호환성 spike. 기록 자체는 기기 시험 PASS가 
 
 ## E001 — 저장소 진입점 생성 / 2026-09-15
 
-- `AofSpds/mitchell`과 `AofSpds/bootstrap`을 확인하고 MITCHELL README를 초기 등록했다.
+- AofSpds/mitchell과 AofSpds/bootstrap을 확인하고 MITCHELL README를 초기 등록했다.
 - Bootstrap 제품 코드는 이 사건에서 변경하지 않았다.
