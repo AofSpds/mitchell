@@ -1,0 +1,57 @@
+{
+  "manifestId": "SNSG-INBOX-REMINDER-001",
+  "date": "2026-09-19",
+  "author": "MITCHELL",
+  "repo": "AofSpds/sns-gateway",
+  "branch": "work/sns-gateway-v0.1",
+  "pr": 1,
+  "outer_sha256": "274d20e0935f082613bba15feef9bdb40bb2f4a4ada9e146341444511b4dd64f",
+  "inner_sha256": "b81a9d0842fc15bfba9a181e69a3f51df3c54e4533366f07060b5ddc8bb3d075",
+  "commit": "f5dfbe964789a757bdbdc6fa1c78bf7c861f64b3",
+  "tree": "edb619aad4a710801fe9d29b84e8938b4a832726",
+  "files": 54,
+  "changed_files_compared": 18,
+  "ci": {
+    "run": 35424606874,
+    "result": "success",
+    "jobs": {
+      "checks": 105848282512,
+      "android": 105848361365,
+      "ios-simulator": 105848361346
+    }
+  },
+  "nativeArtifacts": [
+    {
+      "file": "SNS_GATEWAY_ANDROID_UNSIGNED_CANDIDATE_20260919.zip",
+      "artifact_id": 10578728569,
+      "sha256": "afe512c56a531b04fd796332537fd128742d24bd59b1ad82f7813024cbe233b4",
+      "entries": [
+        {
+          "file": "app-release-unsigned.apk",
+          "bytes": 75522221,
+          "sha256": "b47f00c14dacdafc1d755612611c7fadfb6ff9fcdd6a284b7cbf0801dd4b0bcc"
+        }
+      ]
+    },
+    {
+      "file": "SNS_GATEWAY_IOS_SIMULATOR_CANDIDATE_20260919.zip",
+      "artifact_id": 10578232470,
+      "sha256": "7a93f190f9e0e3a08ff62ce085c33e05efe99c825523c569b5583a275ca269ca",
+      "entries": [
+        {
+          "file": "ios-simulator-app.zip",
+          "bytes": 15708117,
+          "sha256": "fbe05b9a2d69cfb780eda61af2d3f727cbfbafa6b0b1cf0868f62b85ba1ceaab"
+        }
+      ]
+    }
+  ],
+  "sourceArtifactId": 10579011809,
+  "gates": {
+    "device": "NOT_RUN",
+    "iva": "NOT_RUN",
+    "merge": "NOT_DONE",
+    "release": "NOT_DONE",
+    "pmo": "NOT_DISPATCHED"
+  }
+}

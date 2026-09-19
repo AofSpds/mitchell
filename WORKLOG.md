@@ -2,6 +2,26 @@
 
 전체 대화 원문이 아니라 의미 있는 작업 사건의 정제 기록이다.
 
+## E012 — SNS Gateway 재개와 로컬 게시함·알림 구현 / 2026-09-19
+
+Actor: MITCHELL
+Recovery base: mitchell@3e159bf790ab3cdd775add73b8aa7cde89bf5577 / sns-gateway@54cbdcbd77dd2fbcd46b28597e8e5863c7883f0b
+
+- 사용자 계속 진행 지시에 따라 기존 제품 head, Draft PR #1과 성공 CI35422061756을 직접 복구했다. 성공한 합성 공유 후보를 다시 생성하지 않았다.
+- 서버/API 키 없는 계약을 유지하면서 실제 로컬 사진 가져오기, JPEG 사본·해시·중복 등록 방지, SQLite v2 이관, 사진 순서/문구/이력과 iOS/Android 알림 코드를 추가했다.
+- 로컬 단위/SQLite/정적 계약68개를 확인했다. 정확한 source head/tree, native CI 결과와 artifact는 아래 완료보고가 소유한다.
+- 지정 폴더/앨범 지속 연동과 보존 관리·실기/SNS 시험은 미완료다. 전체 v0.1 완성으로 표시하지 않는다.
+- API 키 질문은 SNS OAuth/서버 도입 승인으로 해석하지 않았다. PMO·IVA·기기·실게시·병합·배포는 실행하지 않았다. B/W는 변경하지 않았다.
+
+Results: docs/execution/SNS_GATEWAY_EXECUTION_20260919.md, SNS_GATEWAY_COMPLETION_20260919.md, SNS_GATEWAY_IVA_PACKET_v0.1.md.
+
+## E011 — SNS Gateway 최초 구현 후보 / 2026-09-19 (재개 시 remote 증거로 복구)
+
+- 사용자가 생성한 AofSpds/sns-gateway에서 초기 main13d83595…와 work/sns-gateway-v0.1, Draft PR #1이 만들어졌다.
+- SG-00/01 합성 JPEG 공유, Kotlin/Swift bridge, SQLite 공유 이력, 날짜 선정 기반과 CI를 구현했다.
+- 최초 CI35421776429는 Expo/TypeScript 조합 검사에서 실패했다. SDK 요구에 맞게 TypeScript6.0.3으로 교정한21a9105…에서 CI35422061756의 checks/Android/iOS simulator가 성공했다.
+- 문서 전용54cbdcbd…에서 API 키 불필요·기기 수락 범위를 정리했다. native build는 실제 기기 또는 SNS 호환성 PASS가 아니었다.
+
 ## E010 — 외부 서버·스토리지 없는 모바일 수동 공유 상세 설계 / 2026-09-19
 
 Actor: MITCHELL
